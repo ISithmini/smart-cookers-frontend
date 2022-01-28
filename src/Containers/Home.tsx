@@ -1,15 +1,16 @@
-import HomeData from '../Components/HomeComponent/HomeData';
-import { HomeSection } from '../Components/HomeComponent/HomeSection';
+import React from 'react';
 
-const Home = () => {
+
+interface HomeProps {
+
+}
+
+const Home: React.FunctionComponent<HomeProps> = () => {
     return (
-        <div>
-            <HomeData />
-
+        <div className="home">
+            "Home"
         </div>
-
     );
-
-};
+}
 
 export default Home;

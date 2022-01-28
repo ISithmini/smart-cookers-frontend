@@ -8,7 +8,7 @@ const NavBar = () => {
 
     return (
         <div className="navbar-stick" >
-            Smart Cookers
+            <Link to="/about">Smart Cookers</Link>
         </div>
 
 
