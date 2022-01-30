@@ -8,6 +8,10 @@
   font-family: "Montserrat-light";
   }
 
+h2{
+  margin-top: 30px;
+}
+
 .home-description{
   margin-left: 60px;
   text-align: center;
@@ -26,6 +30,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
+  left: 0;
   bottom: 0;
 }
 
@@ -62,7 +67,6 @@
   justify-content: center;
   text-decoration: none;
 }
-
 
 .footer-qoute{
   color: #fff;

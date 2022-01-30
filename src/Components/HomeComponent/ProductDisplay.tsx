@@ -1,29 +1,31 @@
+import Card from 'react-bootstrap/Card';
+import './ProductDisplay.css';
+import blender from '../../Assets/images/blender.jpg';
+
 interface ProductDisplayProps { }
 
 const ProductDisplay: React.FunctionComponent<ProductDisplayProps> = () => {
-    return (
-        <>
-            <div className='cards'>
-                <h3>Select the product you want to buy...</h3>
-                <div className='cards__container'>
-                    <div className='cards__wrapper'>
+  return (
+    <>
+      <div className="row xs-1 md-2 g-4">
+        {Array.from({ length: 4 }).map((_, idx) => (
+          <div className="col">
+            <Card>
+              <Card.Img variant="top" src={blender} className='img' />
+              <Card.Body>
+                <Card.Title>Mixer Grinder</Card.Title>
+                <Card.Text>
+                  GIXOO Mixer Grinder, 450-500 W, Capacity(Litre): 1.5 Liter
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
+        ))}
+      </div>
 
-                        <ul className='cards__items'>
-                            {/* <CardItem
-              src='images/img-3.jpg'
-              text='Set Sail in the Atlantic Ocean visiting Uncharted Waters'
-              label='Mystery'
-              path='/services'
-            /> */}
+    </>
 
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </>
-
-    );
+  );
 }
 
 export default ProductDisplay;

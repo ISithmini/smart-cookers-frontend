@@ -1,0 +1,108 @@
+.LoginPage {
+    display: flex;
+    align-items: center;
+    width: 1000px;
+    height: max-content;
+    position: relative;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background-color: rgb(1, 11, 39);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  
+  .welcome {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 400 !important;
+    color: rgb(235, 235, 235);
+  }
+  
+  .greetingSection {
+    width: 500px;
+    border-right: 1px solid rgb(255, 255, 255);
+  }
+  
+  
+  .welcomeText {
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-bottom: 10%;
+    color: rgb(233, 233, 233);
+    font-weight: 200 !important;
+    text-align: center;
+  }
+
+  img{
+      margin-left: 40px;
+  }
+
+  h3{
+     color: rgb(67, 164, 255);
+     text-align: center;
+  }
+  
+  .LoginForm {
+    width: 500px;
+    padding: 40px;
+    margin-bottom: 20px;
+  }
+
+  .form-group{
+      margin-bottom: 20px;
+  }
+  
+  @media only screen and (max-width: 991px) {
+    .LoginPage {
+      display: block;
+      width: 500px;
+      top: 0vh;
+      left: 50%;
+      transform: translate(-50%, -0%);
+      margin-top: 180px;
+    }
+    .greetingSection {
+      width: 500px;
+      border-right: none;
+    }
+    .LoginForm {
+      width: 100%;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .LoginPage {
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+    }
+    .greetingSection {
+      width: 100%;
+    }
+  
+    .welcome {
+      font-size: 2em;
+    }
+  
+    .welcomeText {
+      font-size: 1.2em;
+    }
+  
+    .LoginForm {
+      padding-top: 5px;
+    }
+  }
+  
+  .loginTitle {
+    font-size: 2em;
+    color: rgb(1, 11, 39);
+  }
+  
+.Login-btn {
+    background-color: rgb(70, 119, 253) !important;
+    width: 8em;
+    border-color: black;
+
+  }
