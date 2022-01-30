@@ -8,6 +8,7 @@
   position: sticky;
   top: 0;
   z-index: 999;
+  font-family: "Montserrat-Regular";
 }
 
 .navbar-container {
@@ -27,6 +28,7 @@
   font-size: 2rem;
   display: flex;
   align-items: center;
+
 }
 
 
@@ -111,6 +113,7 @@
     top: 0;
     left: 0;
     transform: translate(25%, 50%);
+    
   }
 
   .menu-icon {
@@ -131,7 +134,7 @@
     border-radius: 4px;
     width: 80%;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     background-color: transparent;
     color: #fff;
     padding: 14px 20px;
@@ -150,8 +153,9 @@
   display: block;
     text-align: center;
     border-radius: 4px;
+    font-family: "Montserrat-Regular";
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     background-color: transparent;
     color: #fff;
     padding: 5px 5px;

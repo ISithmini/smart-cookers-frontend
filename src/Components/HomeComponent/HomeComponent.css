@@ -1,7 +1,70 @@
 .home-container {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: rgb(65, 65, 65);
-    margin-bottom: 20px;
-    /* font-weight: 500; */
+  height: 100vh;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  object-fit: contain;
+  font-family: "Montserrat-light";
   }
+
+.home-description{
+  margin-left: 60px;
+  text-align: center;
+}
+
+.form-control{
+  font-family:"Montserrat-Regular" ;
+}
+  
+
+.footer-container{
+  background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  bottom: 0;
+}
+
+.footer-subscription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  color: #fff;
+}
+
+.footer-subscription > p {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+.footer-subscription-heading {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.footer-subscription-text {
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+
+.footer-links {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  text-decoration: none;
+}
+
+
+.footer-qoute{
+  color: #fff;
+  font-size: 1rem;
+}
