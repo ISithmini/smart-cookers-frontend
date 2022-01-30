@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from '../src/Containers/Home'
+// import Home from '../src/Containers/Home'
+import Home from '../src/Components/HomeComponent/HomeComponent';
 import NavBar from "./Components/NavBarComponent/NavBar";
 
 export interface IAppProps { }
@@ -14,7 +15,7 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
         <NavBar />
         <Routes >
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<Home />} />
+          <Route path="/about-us" element={<Home />} />
         </Routes>
 
       </BrowserRouter>
