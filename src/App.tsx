@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Home from '../src/Containers/Home'
 import Home from '../src/Components/HomeComponent/HomeComponent';
+import Inevntory from "./Components/InventoryComponent/Inventory";
 import Login from "./Components/LoginComponent/login";
 import NavBar from "./Components/NavBarComponent/NavBar";
 
@@ -18,6 +19,7 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/inventory" element={<Inevntory />} />
         </Routes>
 
       </BrowserRouter>
