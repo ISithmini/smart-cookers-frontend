@@ -16,6 +16,7 @@ const ProductDisplay: React.FunctionComponent<ProductDisplayProps> = () => {
                 <Card.Title>Mixer Grinder</Card.Title>
                 <Card.Text>
                   GIXOO Mixer Grinder, 450-500 W, Capacity(Litre): 1.5 Liter
+                  <button className="buy-btn">Buy Now </button>
                 </Card.Text>
               </Card.Body>
             </Card>

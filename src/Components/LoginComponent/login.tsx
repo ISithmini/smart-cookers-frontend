@@ -9,7 +9,7 @@ const Login: React.FunctionComponent<LoginProps> = () => {
     return (
         <div className="LoginPage">
             <div className="greetingSection">
-                <img src={loginimg} width="50%" alt="" />
+                {/* <img src={loginimg} width="50%" alt="" /> */}
                 <div className="welcome">
                     Welcome....!
                 </div>

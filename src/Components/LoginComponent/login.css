@@ -7,7 +7,7 @@
     top: 50vh;
     left: 50%;
     transform: translate(-50%, -60%);
-    background-color: rgb(1, 11, 39);
+    background-color: rgb(39, 39, 39);
     border-radius: 10px;
     overflow: hidden;
   }
