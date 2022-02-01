@@ -1,15 +1,14 @@
 import "./login.css";
-import loginimg from '../../Assets/images/login.png';
 import { useState } from "react";
-interface LoginProps {
 
-}
+
+interface LoginProps { }
 
 const Login: React.FunctionComponent<LoginProps> = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.ChangeEvent<any>) => {
         e.preventDefault();
         console.log(email);
 

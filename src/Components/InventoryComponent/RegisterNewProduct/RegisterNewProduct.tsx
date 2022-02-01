@@ -14,7 +14,7 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
     const [activeStatus, setActiveStatus] = useState("");
 
 
-    const handleSubmit = (e, status) => {
+    const handleSubmit = (e: React.ChangeEvent<any>, status: string) => {
         e.preventDefault();
         setActiveStatus(status);
         console.log(name);
@@ -144,7 +144,7 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                 </div>
                             </div>
                             <div className="col-md-6 p-2"
-                                onClick={(e) => {
+                                onClick={(e: React.ChangeEvent<any>) => {
                                     handleSubmit(e, "post");
                                 }}>
                                 <button className="btn Login-btn center">Save Product</button>

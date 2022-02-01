@@ -6,7 +6,7 @@ export const getProducts = () => {
 
 
 
-export const addProduct = (data) => {
+export const addProduct = (data: object) => {
     axios({
         method: 'post',
         url: 'https://61f8a8f7783c1d0017c4470d.mockapi.io/products',
