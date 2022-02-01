@@ -1,11 +1,28 @@
-import NoImg from '../../../Assets/images/no-image.jpg';
+import { useState } from 'react';
+import './RegisterNewProduct.css'
 
 
-interface RegisterNewProductProps {
-
-}
+interface RegisterNewProductProps { }
 
 const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () => {
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [price, setPrice] = useState("");
+    const [img, setImg] = useState("../../../Assets/images/no-image.jpg");
+    const [activeStatus, setActiveStatus] = useState("");
+
+
+    const handleSubmit = (e, status) => {
+        e.preventDefault();
+        setActiveStatus(status);
+        console.log(name);
+        console.log(description);
+        console.log(quantity);
+        console.log(price)
+
+    }
+
     return (
         <>
             <div className="new-product">
@@ -25,6 +42,9 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                         id="inputProductName"
                                         placeholder="Add the product name here"
                                         name="Product-name"
+                                        onChange={(e) => {
+                                            setName(e.target.value);
+                                        }}
                                     />
                                 </div>
                             </div>
@@ -40,6 +60,9 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                         id="inputProductDescription"
                                         placeholder="Add the product description here"
                                         name="Product-description"
+                                        onChange={(e) => {
+                                            setDescription(e.target.value);
+                                        }}
                                     />
                                 </div>
                             </div>
@@ -53,6 +76,9 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                         className="form-control"
                                         id="inputQuantity"
                                         placeholder="Add the quantity available here"
+                                        onChange={(e) => {
+                                            setQuantity(e.target.value);
+                                        }}
                                     />
                                 </div>
                             </div>
@@ -70,6 +96,9 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                             className="form-control"
                                             id="inputPrice"
                                             placeholder="Add the price per 1 quantity here"
+                                            onChange={(e) => {
+                                                setPrice(e.target.value);
+                                            }}
                                         />
                                     </div>
                                 </div>
@@ -90,20 +119,26 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                     <br />
                                     <div className="input-group mb-2 ">
                                         <input
-                                            src={NoImg}
+                                            src={img}
                                             type="file"
                                             id="image"
                                             name="image"
                                             accept=".png, .jpg, .jpeg"
                                             required={true}
+                                            onChange={(e) => {
+                                                // setImg();
+                                            }}
                                         />
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-md-6 p-2"
+                                onClick={(e) => {
+                                    handleSubmit(e, "post");
+                                }}>
+                                <button className="btn Login-btn center">Save Product</button>
 
-
-                            <button className="btn Login-btn center">Save Product</button>
-
+                            </div>
                         </form>
 
                     </div>
