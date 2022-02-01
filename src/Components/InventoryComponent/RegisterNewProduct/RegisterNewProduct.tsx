@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { addProduct } from '../../../Services/Api/MockApi';
 import './RegisterNewProduct.css'
 
 
@@ -20,6 +21,16 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
         console.log(description);
         console.log(quantity);
         console.log(price)
+
+        var data = {
+            "Pname": name,
+            "Pdescription": description,
+            "Price": price,
+            "qtyAvailable": quantity,
+        }
+
+        addProduct(data);
+
 
     }
 
