@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { getProducts } from '../../../Services/Api/MockApi';
 import './ViewProducts.css';
+import Product from '../ViewProducts/Product';
 
 interface ViewProductsProps {
-    // Pname: string,
-    // Pdescription: string,
-    // Price: number,
-    // qtyAvailable: number,
 }
 
 
@@ -27,7 +24,7 @@ const ViewProducts: React.FunctionComponent<ViewProductsProps> = () => {
     useEffect(() => {
         getProducts().then((res: any) => {
             setProducts(res.data);
-            console.log(products);
+            //console.log(products);
         })
             .catch(err => {
                 console.log(err);
@@ -49,19 +46,16 @@ const ViewProducts: React.FunctionComponent<ViewProductsProps> = () => {
                             <th scope="col"> Quantity Available</th>
                         </tr>
                     </thead>
-                    {/* {products.map((product) => console.log(product))} */}
-                    {products.map((product,) => {
-                        <tbody key={product.id}>
-                            <tr>
-                                <td>{product.Pname}</td>
-                                <td>{product.Pdescription}</td>
-                                <td>{product.Price}</td>
-                                <td>{product.qtyAvailable}</td>
-                            </tr>
+                    <tbody>
+                        {products.map((item, index) => {
+                            return (
+                                <Product product={item} key={index} />
+                            )
+                        })}
+                    </tbody>
 
-                        </tbody>
 
-                    })}
+
 
                 </table>
 
