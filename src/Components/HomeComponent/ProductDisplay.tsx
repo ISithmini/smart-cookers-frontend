@@ -1,27 +1,35 @@
-import Card from 'react-bootstrap/Card';
 import './ProductDisplay.css';
-import blender from '../../Assets/images/blender.jpg';
+import { useEffect, useState } from 'react';
+import { getProducts } from '../../Services/Api/MockApi';
+import ProductCard from './ProductCard';
 
 interface ProductDisplayProps { }
 
 const ProductDisplay: React.FunctionComponent<ProductDisplayProps> = () => {
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts().then((res: any) => {
+      setProducts(res.data);
+      //console.log(products);
+    })
+      .catch(err => {
+        console.log(err);
+      });
+
+  }, []);
+
   return (
     <>
       <div className="row xs-1 md-2 g-4">
-        {Array.from({ length: 4 }).map((_, idx) => (
-          <div className="col">
-            <Card>
-              <Card.Img variant="top" src={blender} className='img' />
-              <Card.Body>
-                <Card.Title>Mixer Grinder</Card.Title>
-                <Card.Text>
-                  GIXOO Mixer Grinder, 450-500 W, Capacity(Litre): 1.5 Liter
-                  <button className="buy-btn">Buy Now </button>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
-        ))}
+        {products.map((item, index) => {
+          return (
+            <ProductCard product={item} key={index} />
+          )
+
+        })}
+
       </div>
 
     </>
