@@ -9,14 +9,14 @@ interface OneProductDisplayProps {
 }
 
 
-const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () => {
+const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (id) => {
     const [user, setuser] = useState(false);
     const [prod, setProd] = useState([]);
     
     const product = useContext(ProductContext);
 
     useEffect(() => {
-        getProd(product.product.id).then((res: any) => {
+        getProd(id).then((res: any) => {
             setProd(res.data);
             console.log(prod);
         })

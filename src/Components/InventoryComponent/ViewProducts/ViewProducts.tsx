@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getProducts } from '../../../Services/Api/MockApi';
 import './ViewProducts.css';
 import Product from '../ViewProducts/Product';
+import { ProductContext } from "../../../Context/ProductContext";
 
 interface ViewProductsProps {
 }
@@ -20,11 +21,13 @@ const ViewProducts: React.FunctionComponent<ViewProductsProps> = () => {
 
     const [products, setProducts] = useState([]);
 
+    const product = useContext(ProductContext);
+
 
     useEffect(() => {
         getProducts().then((res: any) => {
             setProducts(res.data);
-            //console.log(products);
+            console.log(products);
         })
             .catch(err => {
                 console.log(err);
