@@ -17,7 +17,7 @@ export interface IAppProps { }
 
 const App: React.FunctionComponent<IAppProps> = () => {
   //const [count, setCount] = useState(0)
-  const product = useContext(ProductContext);
+  //const product = useContext(ProductContext);
 
   return (
     <div className="App">
@@ -33,7 +33,7 @@ const App: React.FunctionComponent<IAppProps> = () => {
             <Route path="/inventory/new-product" element={<RegisterNewProduct />} />
             <Route path="/inventory/view-products" element={< ViewProducts />} />
             <Route path="/profile" element={< Profile />} />
-            <Route path="/view-products/id=:id" element={< OneProductDisplay />} />
+            <Route path='/view-products/id=:id' element={<OneProductDisplay/>} />
           </Routes>
 
         </ProductContextProvider>

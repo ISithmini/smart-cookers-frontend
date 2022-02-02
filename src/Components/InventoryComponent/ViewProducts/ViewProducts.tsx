@@ -19,9 +19,9 @@ const ViewProducts: React.FunctionComponent<ViewProductsProps> = () => {
 
     // };
 
-    const [products, setProducts] = useState([]);
+    
 
-    const product = useContext(ProductContext);
+    const [products, setProducts] = useState([]);
 
 
     useEffect(() => {
@@ -54,6 +54,7 @@ const ViewProducts: React.FunctionComponent<ViewProductsProps> = () => {
                         {products.map((item, index) => {
                             return (
                                 <Product product={item} key={index} />
+                                
                             )
                         })}
                     </tbody>

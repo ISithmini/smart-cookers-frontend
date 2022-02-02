@@ -128,7 +128,7 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                         />
                                     </div>
                                     <br />
-                                    <div className="input-group mb-2 ">
+                                    <div className="form-control-file ">
                                         <input
                                             src={img}
                                             type="file"

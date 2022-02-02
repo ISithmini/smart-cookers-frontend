@@ -14,6 +14,7 @@ type productporps = {
         Pdescription: string,
         Price: number,
         qtyAvailable: number,
+        id: string
 
     }
 };
@@ -28,7 +29,12 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
                     <Card.Text>
                         {props.product.Pdescription} <br />
                         <Link to={`/view-products/id=${props.product.id}`}>
-                            <button className="buy-btn">Buy Now </button>
+                            <button className="buy-btn" onClick={() => {
+                                <OneProductDisplay />
+                            }}>
+                                Buy Now
+
+                            </button>
                         </Link>
                     </Card.Text>
                 </Card.Body>
