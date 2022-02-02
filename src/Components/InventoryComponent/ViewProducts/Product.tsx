@@ -1,5 +1,5 @@
-import { Link, Route } from "react-router-dom";
-import OneProductDisplay from '../OneProduct/OneProductDisplay';
+import { Link } from "react-router-dom";
+import OneProductDisplay from "./OneProductDisplay";
 
 interface ProductProps {
 
@@ -28,15 +28,16 @@ const Product: React.FunctionComponent<productporps> = (props) => {
             <td>{props.product.Price}</td>
             <td>{props.product.qtyAvailable}</td>
             <td>
-                <Route path={`/view-products/id=${props.product.id}`} element={<OneProductDisplay children={props.product.id} />}>
+                <Link to={`/view-products/id=${props.product.id}`}>
                     <button className="btn-dark">View Product</button>
-                </Route>
+                </Link>
             </td>
 
 
 
 
         </tr>
+
 
 
     );
