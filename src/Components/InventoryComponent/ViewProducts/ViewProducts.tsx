@@ -44,6 +44,7 @@ const ViewProducts: React.FunctionComponent<ViewProductsProps> = () => {
                             <th scope="col"> Description</th>
                             <th scope="col">Price (per 1 Qty)</th>
                             <th scope="col"> Quantity Available</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
