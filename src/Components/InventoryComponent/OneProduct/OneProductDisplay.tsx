@@ -7,8 +7,6 @@ import '../OneProduct/OneProductDisplay.css';
 
 
 interface OneProductDisplayProps {
-
-
 }
 
 type prod = {
@@ -17,7 +15,7 @@ type prod = {
     Price: Number,
     qtyAvailable: Number,
     id: string,
-    img: string
+    image: string
 
 }
 
@@ -95,7 +93,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
                             <h6>Photo</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <img src={prod?.img} className="w-25 p-3 h-50" />
+                            <img src={prod?.image} className="w-25 p-3 h-50" />
                         </div>
                     </div>
 

@@ -15,7 +15,7 @@ type productporps = {
         Price: number,
         qtyAvailable: number,
         id: string
-        img: string
+        image: string
 
     }
 };
@@ -24,7 +24,7 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
     return (
         <div className="col-md-3">
             <Card>
-                <Card.Img variant="top" src={props.product.img} className='img' />
+                <Card.Img variant="top" src={props.product.image} className='img' />
                 <Card.Body>
                     <Card.Title> {props.product.Pname}</Card.Title>
                     <Card.Text>

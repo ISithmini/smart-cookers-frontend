@@ -1,54 +1,104 @@
 import { useState } from 'react';
 import { addProduct } from '../../../Services/ProductService/ProductApi';
 import './RegisterNewProduct.css'
+import {storage} from '../../../Services/Firebase/firebase'
 
 
 interface RegisterNewProductProps { }
+
+var fileState = new File( [''], '', {
+    type: 'text/plain'
+})
 
 const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
-    const [img, setImg] = useState<File>()
+    const [img, setImg] = useState(fileState)
     const [productImg, setproductImg] = useState('../../../Assets/images/no-image');
     const [activeStatus, setActiveStatus] = useState("");
 
 
-    const handleSubmit = (e: React.ChangeEvent<any>, status: string) => {
+    const handleSubmit = async (e: React.ChangeEvent<any>, status: string) => {
+        await handleUpload();
         e.preventDefault();
         setActiveStatus(status);
-        console.log(name);
-        console.log(description);
-        console.log(quantity);
-        console.log(price)
 
         var data = {
             "Pname": name,
             "Pdescription": description,
             "Price": price,
             "qtyAvailable": quantity,
-            "img": productImg
+            "image": productImg
 
         }
         addProduct(data);
     }
 
-    // const handleImageChange = function (e: React.ChangeEvent<HTMLInputElement>) {
-    //     const fileList = e.target.files;
+    const handleChange = (e : any) => {
+        if (e.target.files[0]) {
+          setImg(e.target.files[0]);
+          console.log(img);
+          
+          
+        }
+      };
 
-    //     if (!fileList) return;
+      const [progress, setProgress] = useState(0);
 
-    //     setImg(fileList[0]);
-    //   };
+      const handleUpload = async () => {
+        const uploadTask = storage.ref(`images/${img.name}`).put(img);
+        console.log(uploadTask);
+        
+        uploadTask.on(
+          "state_changed",
+          snapshot => {
+            const progress = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+            setProgress(progress);
+          },
+          error => {
+            console.log(error);
+          },
+           () => {
+            storage
+              .ref("images")
+              .child(img.name)
+              .getDownloadURL()
+              .then(productImg => {
+                setproductImg(productImg);
+                console.log(productImg);
+                
+              });
+          }
+        );
+      };
 
-    //   const uploadFile = function (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) {
-    //     if (img) {
-    //         const formData = new FormData();
-    //         formData.append("image", img, img.name);
-    //     }
-    // };
-    // }
+
+//     /////Image Display
+//   const imageUpload = (image) => {
+//     //console.log(image);
+//     if (image !== undefined) {
+//       setImg(image);
+//       imageHandler(image);
+//     }
+//   };
+//   const [jobImg, setjobImage] = useState(
+//     "/assets/images/no-image-placeholder.jpg"
+//   );
+//   const imageHandler = (image) => {
+//     const reader = new FileReader();
+//     reader.onload = () => {
+//       if (reader.readyState === 2) {
+//         setproductImg(reader.result);
+//       }
+//     };
+//     reader.readAsDataURL(image);
+//   };
+
+
 
 
 
@@ -136,30 +186,28 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                 <label className="col-md-2 col-sm-12 col-form-label">
                                     <b>Upload Image</b>
                                 </label>
-                                {/* <div className="col-sm-10 col-md-8">
+                                <div className="col-sm-10 col-md-8">
                                     <div className="img-holder">
                                         <img
                                             alt="image"
                                             id="img"
                                             className="img"
                                         />
-                                        />
                                     </div>
                                     <br />
                                     <div className="form-control-file ">
                                         <input
-                                            src={img}
                                             type="file"
                                             id="image"
                                             name="image"
                                             accept=".png, .jpg, .jpeg"
                                             required={true}
-                                            onChange={uploadFile}
+                                            onChange={handleChange}
                                         />
                                         
                                     </div>
-                                </div> */}
-                                <div className="col-sm-10 col-md-4">
+                                </div>
+                                {/* <div className="col-sm-10 col-md-4">
                                         <input
                                             type="text"
                                             id="image-url"
@@ -168,7 +216,7 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                                 setproductImg(e.target.value);
                                             }}
                                         />
-                                </div>
+                                </div> */}
                             </div>
                             <div className="col-md-6 p-2"
                                 onClick={(e: React.ChangeEvent<any>) => {

@@ -23,7 +23,6 @@ const App: React.FunctionComponent<IAppProps> = () => {
     <div className="App">
 
       <BrowserRouter>
-        <ProductContextProvider>
           <NavBar />
           <Routes >
             <Route path="/" element={<Home />} />
@@ -35,9 +34,6 @@ const App: React.FunctionComponent<IAppProps> = () => {
             <Route path="/profile" element={< Profile />} />
             <Route path='/view-products/id=:id' element={<OneProductDisplay/>} />
           </Routes>
-
-        </ProductContextProvider>
-
 
       </BrowserRouter>
 
