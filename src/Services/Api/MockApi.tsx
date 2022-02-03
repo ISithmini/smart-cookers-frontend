@@ -5,14 +5,14 @@ export const getProducts = () => {
 };
 
 export const getProd = (id:string) => {
-   // return axios.get(`https://61f8a8f7783c1d0017c4470d.mockapi.io/products/5`)
-    return axios({
-    method: 'get',
-    url: `https://61f8a8f7783c1d0017c4470d.mockapi.io/products/${id}`,
-    headers: {
-        'Content-Type': 'application/json'
-    },
-})
+ return axios.get(`https://61f8a8f7783c1d0017c4470d.mockapi.io/products/${id}`)
+//     return axios({
+//     method: 'get',
+//     url: `https://61f8a8f7783c1d0017c4470d.mockapi.io/products/${id}`,
+//     headers: {
+//         'Content-Type': 'application/json'
+//     },
+// })
     // .then(function (response) {
     //     //handle success
     //     console.log(response);

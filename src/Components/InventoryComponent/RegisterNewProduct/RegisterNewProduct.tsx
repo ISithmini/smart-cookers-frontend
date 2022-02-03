@@ -10,7 +10,8 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
     const [description, setDescription] = useState("");
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
-    const [img, setImg] = useState("../../../Assets/images/no-image.jpg");
+    const [img, setImg] = useState<File>()
+    const [productImg, setproductImg] = useState('../../../Assets/images/no-image');
     const [activeStatus, setActiveStatus] = useState("");
 
 
@@ -27,12 +28,29 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
             "Pdescription": description,
             "Price": price,
             "qtyAvailable": quantity,
+            "img": productImg
+
         }
-
         addProduct(data);
-
-
     }
+
+    // const handleImageChange = function (e: React.ChangeEvent<HTMLInputElement>) {
+    //     const fileList = e.target.files;
+
+    //     if (!fileList) return;
+
+    //     setImg(fileList[0]);
+    //   };
+
+    //   const uploadFile = function (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) {
+    //     if (img) {
+    //         const formData = new FormData();
+    //         formData.append("image", img, img.name);
+    //     }
+    // };
+    // }
+
+
 
     return (
         <>
@@ -118,13 +136,13 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                 <label className="col-md-2 col-sm-12 col-form-label">
                                     <b>Upload Image</b>
                                 </label>
-
-                                <div className="col-sm-10 col-md-8">
+                                {/* <div className="col-sm-10 col-md-8">
                                     <div className="img-holder">
                                         <img
                                             alt="image"
                                             id="img"
                                             className="img"
+                                        />
                                         />
                                     </div>
                                     <br />
@@ -136,11 +154,20 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                             name="image"
                                             accept=".png, .jpg, .jpeg"
                                             required={true}
+                                            onChange={uploadFile}
+                                        />
+                                        
+                                    </div>
+                                </div> */}
+                                <div className="col-sm-10 col-md-4">
+                                        <input
+                                            type="text"
+                                            id="image-url"
+                                            name="url"
                                             onChange={(e) => {
-                                                // setImg();
+                                                setproductImg(e.target.value);
                                             }}
                                         />
-                                    </div>
                                 </div>
                             </div>
                             <div className="col-md-6 p-2"

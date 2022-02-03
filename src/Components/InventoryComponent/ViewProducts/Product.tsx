@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ProductContext } from "../../../Context/ProductContext";
-import OneProduct from "../OneProduct/OneProduct";
 import OneProductDisplay from "../OneProduct/OneProductDisplay";
 
 interface ProductProps {
@@ -14,7 +13,8 @@ type productporps = {
         Pdescription: string,
         Price: number,
         qtyAvailable: number,
-        id: string
+        id: string,
+        img:string
     }
 
 };

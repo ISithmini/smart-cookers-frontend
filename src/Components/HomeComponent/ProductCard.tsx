@@ -15,6 +15,7 @@ type productporps = {
         Price: number,
         qtyAvailable: number,
         id: string
+        img: string
 
     }
 };
@@ -23,11 +24,13 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
     return (
         <div className="col-md-3">
             <Card>
-                <Card.Img variant="top" src={blender} className='img' />
+                <Card.Img variant="top" src={props.product.img} className='img' />
                 <Card.Body>
                     <Card.Title> {props.product.Pname}</Card.Title>
                     <Card.Text>
-                        {props.product.Pdescription} <br />
+                        <div className='text-danger'>
+                            Rs. {props.product.Price}
+                        </div><br />
                         <Link to={`/view-products/id=${props.product.id}`}>
                             <button className="buy-btn" onClick={() => {
                                 <OneProductDisplay />

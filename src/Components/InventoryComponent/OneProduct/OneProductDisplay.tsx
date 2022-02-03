@@ -11,11 +11,16 @@ interface OneProductDisplayProps {
 
 }
 
-type productprop = {
-    //p: String;
-}
+// type prod = {
+//         Pname: String,
+//         Pdescription: String,
+//         Price: Number,
+//         qtyAvailable: Number,
+//         id: String
+    
+// }
 
-const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (props) => {
+const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () => {
     const [user, setuser] = useState(false);
 
 
@@ -23,14 +28,15 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
 
     let {id} = useParams();
     
-    const product = useContext(ProductContext);
+    //const product = useContext(ProductContext);
 
     console.log(id);
     
 
     useEffect(() => {
         //getProd('5');
-        getProd(id).then((res: any) => {
+        getProd(id)
+        .then((res: any) => {
             setProd(res.data);
             console.log(res.data);
         })
@@ -43,7 +49,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
     
 
 
-    //console.log(product);
+    //console.log(prod.id);
     
 
     return (
