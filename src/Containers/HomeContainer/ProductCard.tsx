@@ -2,7 +2,7 @@ import blender from '../../Assets/images/blender.jpg';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import './ProductDisplay.css';
-import OneProductDisplay from '../InventoryComponent/OneProduct/OneProductDisplay';
+import OneProductDisplay from '../../Components/InventoryComponent/OneProduct/OneProductDisplay';
 
 interface ProductCardProps {
 

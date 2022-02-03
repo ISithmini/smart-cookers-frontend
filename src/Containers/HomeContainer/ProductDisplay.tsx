@@ -1,6 +1,6 @@
 import './ProductDisplay.css';
 import { useEffect, useState } from 'react';
-import { getProducts } from '../../Services/Api/MockApi';
+import { getProducts } from '../../Services/ProductService/ProductApi';
 import ProductCard from './ProductCard';
 
 interface ProductDisplayProps { }

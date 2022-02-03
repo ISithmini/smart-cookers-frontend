@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { addProduct } from '../../../Services/Api/MockApi';
+import { addProduct } from '../../../Services/ProductService/ProductApi';
 import './RegisterNewProduct.css'
 
 

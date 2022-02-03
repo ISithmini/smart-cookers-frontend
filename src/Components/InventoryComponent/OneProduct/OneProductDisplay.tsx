@@ -1,56 +1,57 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import {ProductContext} from '../../../Context/ProductContext';
-import ProductDisplay from "../../HomeComponent/ProductDisplay";
-import { getProd } from "../../../Services/Api/MockApi";;
-
+import { ProductContext } from '../../../Context/ProductContext';
+import ProductDisplay from "../../../Containers/HomeContainer/ProductDisplay";
+import { getOneProduct } from '../../../Services/ProductService/ProductApi'
+import '../OneProduct/OneProductDisplay.css';
 
 
 interface OneProductDisplayProps {
-    
+
 
 }
 
-// type prod = {
-//         Pname: String,
-//         Pdescription: String,
-//         Price: Number,
-//         qtyAvailable: Number,
-//         id: String
-    
-// }
+type prod = {
+    Pname: string,
+    Pdescription: string,
+    Price: Number,
+    qtyAvailable: Number,
+    id: string,
+    img: string
+
+}
 
 const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () => {
-    const [user, setuser] = useState(false);
+    const [user, setuser] = useState(true);
 
 
-    const [prod, setProd] = useState([]);
+    const [prod, setProd] = useState<prod | null>(null);
 
-    let {id} = useParams();
-    
+    let { id } = useParams();
+
     //const product = useContext(ProductContext);
 
     console.log(id);
-    
+
 
     useEffect(() => {
         //getProd('5');
-        getProd(id)
-        .then((res: any) => {
-            setProd(res.data);
-            console.log(res.data);
-        })
+        getOneProduct(id)
+            .then((res: any) => {
+                setProd(res.data);
+                console.log(res.data);
+            })
             .catch(err => {
                 console.log(err);
             });
 
     }, []);
 
-    
+
 
 
     //console.log(prod.id);
-    
+
 
     return (
         <div className="profile">
@@ -62,7 +63,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
                             <h6>Product Name</h6>
                         </div>
                         <div className="col-sm-8">
-                            <h6 className="text-muted">{prod.Pname}</h6>
+                            <h6 className="text-muted">{prod?.Pname}</h6>
                         </div>
                     </div>
                     <div className="row">
@@ -70,7 +71,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
                             <h6>Product Description</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <h6 className="text-muted"> {prod.Pdescription}</h6>
+                            <h6 className="text-muted"> {prod?.Pdescription}</h6>
                         </div>
                     </div>
                     <div className="row">
@@ -78,7 +79,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
                             <h6>Price</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <h6 className="text-muted">{prod.Price}</h6>
+                            <h6 className="text-muted">{prod?.Price}</h6>
                         </div>
                     </div>
                     <div className="row">
@@ -86,7 +87,15 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
                             <h6>Quantity Available</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <h6 className="text-muted">{prod.qtyAvailable}</h6>
+                            <h6 className="text-muted">{prod?.qtyAvailable}</h6>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-4 text-center">
+                            <h6>Photo</h6>
+                        </div>
+                        <div className="col-sm-8 ">
+                            <img src={prod?.img} className="w-25 p-3 h-50" />
                         </div>
                     </div>
 
@@ -94,8 +103,8 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
                 {user && <div className="row">
                     <div className="col-sm-8"></div>
                     <div className="col-sm-4 ">
-                        <Link to='/order' className='btn-edit'>
-                            <button className="btn">Proceed Order</button>
+                        <Link to='/order' >
+                            <button className='btn-edit'>Proceed Order</button>
                         </Link>
 
 

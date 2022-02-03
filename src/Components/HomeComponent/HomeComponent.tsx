@@ -1,7 +1,7 @@
 import './HomeComponent.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import React, { useState, useEffect } from 'react';
-import ProductDisplay from './ProductDisplay';
+import ProductDisplay from '../../Containers/HomeContainer/ProductDisplay';
 import { Link } from 'react-router-dom';
 
 

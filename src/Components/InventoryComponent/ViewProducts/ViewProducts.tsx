@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { getProducts } from '../../../Services/Api/MockApi';
+import { getProducts } from '../../../Services/ProductService/ProductApi';
 import './ViewProducts.css';
 import Product from '../ViewProducts/Product';
 import { ProductContext } from "../../../Context/ProductContext";

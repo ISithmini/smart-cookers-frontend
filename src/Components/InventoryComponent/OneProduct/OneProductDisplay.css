@@ -1,0 +1,11 @@
+.btn-edit{
+    background-color: rgb(10, 90, 10);
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+  font-size: 1em;
+  transition: 0.3s; 
+  font-weight: 600;
+  padding: 2px 8px;
+/* border-radius: 3px; */
+
+  }
