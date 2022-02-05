@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { getProducts } from '../../../Services/ProductService/ProductApi';
 import './ViewProducts.css';
-import Product from '../ViewProducts/Product';
+import Product from '../../../Containers/ProductContainer/Product';
 import { ProductContext } from "../../../Context/ProductContext";
 
 interface ViewProductsProps {

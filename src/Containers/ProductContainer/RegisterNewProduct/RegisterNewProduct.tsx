@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { addProduct } from '../../../Services/ProductService/ProductApi';
 import './RegisterNewProduct.css'
-import {storage} from '../../../Services/Firebase/firebase'
+import { storage } from '../../../Services/Firebase/firebase'
+import { Link, useNavigate } from 'react-router-dom';
 
 
 interface RegisterNewProductProps { }
 
-var fileState = new File( [''], '', {
+var fileState = new File([''], '', {
     type: 'text/plain'
 })
 
@@ -16,8 +17,13 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
     const [img, setImg] = useState(fileState)
-    const [productImg, setproductImg] = useState('../../../Assets/images/no-image');
+    const [productImg, setproductImg] = useState("../../../Assets/images/no-image");
     const [activeStatus, setActiveStatus] = useState("");
+    const [completed, setcompleted] = useState(true);
+
+    const navigate = useNavigate();
+
+
 
 
     const handleSubmit = async (e: React.ChangeEvent<any>, status: string) => {
@@ -33,70 +39,88 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
             "image": productImg
 
         }
-        addProduct(data);
+
+       await addProduct(data);
+    //    .then( () => {
+    //        console.log("sfsdgdfgf");
+    //        if(productImg!="../../../Assets/images/no-image"){
+    //         navigate(-1);
+    //        }
+    //    });
+    //console.log("sdfdgf");
+    
+    goBack();
+
     }
 
-    const handleChange = (e : any) => {
+    const goBack = () => {
+        navigate(-1);
+        console.log("asdsfdfgsgergrerageafg");
+        
+
+    }
+
+    const handleChange = (e: any) => {
         if (e.target.files[0]) {
-          setImg(e.target.files[0]);
-          console.log(img);
-          
-          
+            setImg(e.target.files[0]);
+            console.log(img);
+
+
         }
-      };
+    };
 
-      const [progress, setProgress] = useState(0);
+    const [progress, setProgress] = useState(0);
 
-      const handleUpload = async () => {
+    const handleUpload = async () => {
         const uploadTask = storage.ref(`images/${img.name}`).put(img);
         console.log(uploadTask);
-        
+
         uploadTask.on(
-          "state_changed",
-          snapshot => {
-            const progress = Math.round(
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            setProgress(progress);
-          },
-          error => {
-            console.log(error);
-          },
-           () => {
-            storage
-              .ref("images")
-              .child(img.name)
-              .getDownloadURL()
-              .then(productImg => {
-                setproductImg(productImg);
-                console.log(productImg);
-                
-              });
-          }
+            "state_changed",
+            snapshot => {
+                const progress = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                setProgress(progress);
+            },
+            error => {
+                console.log(error);
+            },
+            () => {
+                storage
+                    .ref("images")
+                    .child(img.name)
+                    .getDownloadURL()
+                    .then(productImg => {
+                        setproductImg(productImg);
+                        console.log(productImg);
+
+                    });
+            }
         );
-      };
+    };
 
 
-//     /////Image Display
-//   const imageUpload = (image) => {
-//     //console.log(image);
-//     if (image !== undefined) {
-//       setImg(image);
-//       imageHandler(image);
-//     }
-//   };
-//   const [jobImg, setjobImage] = useState(
-//     "/assets/images/no-image-placeholder.jpg"
-//   );
-//   const imageHandler = (image) => {
-//     const reader = new FileReader();
-//     reader.onload = () => {
-//       if (reader.readyState === 2) {
-//         setproductImg(reader.result);
-//       }
-//     };
-//     reader.readAsDataURL(image);
-//   };
+    //     /////Image Display
+    //   const imageUpload = (image) => {
+    //     //console.log(image);
+    //     if (image !== undefined) {
+    //       setImg(image);
+    //       imageHandler(image);
+    //     }
+    //   };
+    //   const [jobImg, setjobImage] = useState(
+    //     "/assets/images/no-image-placeholder.jpg"
+    //   );
+    //   const imageHandler = (image) => {
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //       if (reader.readyState === 2) {
+    //         setproductImg(reader.result);
+    //       }
+    //     };
+    //     reader.readAsDataURL(image);
+    //   };
 
 
 
@@ -204,7 +228,7 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                             required={true}
                                             onChange={handleChange}
                                         />
-                                        
+
                                     </div>
                                 </div>
                                 {/* <div className="col-sm-10 col-md-4">
@@ -222,9 +246,45 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                 onClick={(e: React.ChangeEvent<any>) => {
                                     handleSubmit(e, "post");
                                 }}>
-                                <button className="btn Login-btn center">Save Product</button>
+                                <button className="edit btn-success ">Save Product</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <button className="edit btn-secondary" onClick={() => navigate(-1)} >Cancel</button>
 
                             </div>
+
+                            {/* {completed && (
+                                <div>
+                                <p className="content lead successfull text-center justify-content-center">
+                                  Product has been saved successfully.
+                                </p>
+                                <div className="row successfull  justify-content-center">
+                                  <button
+                                    type="button"
+                                    className="btn btn-light pr-5 pl-5  justify-content-center text-align-center"
+                                    onClick={(e) => {
+                                        navigate(-1);
+                                      setcompleted(false);
+                                    }}
+                                  >
+                                    Close
+                                  </button>
+                                  &nbsp;&nbsp;
+                                  <Link
+                                    className="allads pr-2 pl-2   justify-content-center text-align-center"
+                                    to="/inventory"
+                                  >
+                                    <button
+                                      type="button"
+                                      className=" btn-success  justify-content-center text-align-center"
+                                    >
+                                      Go to All Procuts Page
+                                    </button>
+                                  </Link>
+                                </div>
+                                <br />
+                              </div>
+                            ) } */}
                         </form>
 
                     </div>

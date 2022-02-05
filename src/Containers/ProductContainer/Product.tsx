@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ProductContext } from "../../../Context/ProductContext";
-import OneProductDisplay from "../OneProduct/OneProductDisplay";
+import { ProductContext } from "../../Context/ProductContext";
+import OneProductDisplay from "../../Components/InventoryComponent/OneProduct/OneProductDisplay";
 
 interface ProductProps {
 

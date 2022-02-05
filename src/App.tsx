@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Home from '../src/Containers/Home'
 import Home from '../src/Components/HomeComponent/HomeComponent';
 import Inevntory from "./Components/InventoryComponent/Inventory";
-import RegisterNewProduct from "./Components/InventoryComponent/RegisterNewProduct/RegisterNewProduct";
+import RegisterNewProduct from "./Containers/ProductContainer/RegisterNewProduct/RegisterNewProduct";
 import OneProductDisplay from "./Components/InventoryComponent/OneProduct/OneProductDisplay";
 import ViewProducts from "./Components/InventoryComponent/ViewProducts/ViewProducts";
 import Login from "./Components/LoginComponent/login";
