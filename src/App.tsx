@@ -10,6 +10,7 @@ import NavBar from "./Components/NavBarComponent/NavBar";
 import Profile from "./Components/ProfileComponent/Profile";
 import { ProductContext, ProductContextProvider } from "./Context/ProductContext";
 import { useContext } from "react";
+import AuthContextProvider from "./Context/AuthContext";
 
 export interface IAppProps { }
 
@@ -21,7 +22,7 @@ const App: React.FunctionComponent<IAppProps> = () => {
 
   return (
     <div className="App">
-
+      <AuthContextProvider>
       <BrowserRouter>
           <NavBar />
           <Routes >
@@ -34,8 +35,8 @@ const App: React.FunctionComponent<IAppProps> = () => {
             <Route path="/profile" element={< Profile />} />
             <Route path='/view-products/id=:id' element={<OneProductDisplay/>} />
           </Routes>
-
       </BrowserRouter>
+      </AuthContextProvider>
 
     </div>
   )

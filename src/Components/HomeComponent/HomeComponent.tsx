@@ -4,18 +4,24 @@ import React, { useState, useEffect } from 'react';
 import ProductDisplay from '../../Containers/HomeContainer/ProductDisplay';
 import { Link } from 'react-router-dom';
 import {getUser} from '../../Services/Api/UserServices/UserApi'
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
 
 
 interface HomeComponentProps { }
 
 const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
+
+    const { user , dispatch} = useContext(AuthContext);
+
     const [click, setClick] = useState(false);
 
     const handleClick = () => setClick(true);
     const closeMobileMenu = () => setClick(false);
 
     // useEffect(() => {
-    //    // console.log(document.querySelectorAll("p > div"))
+    //    console.log(user.id);
+       
       
     //   }, []);
       
