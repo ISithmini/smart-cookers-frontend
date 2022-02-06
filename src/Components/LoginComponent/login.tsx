@@ -19,28 +19,39 @@ const Login: React.FunctionComponent<LoginProps> = () => {
 
         logIn(email, password)
             .then((res) => {
-                //console.log(res.data.message);
+                console.log(res.data);
                 if (res.data.message) {
                     console.log(res.data.message);
-                    setloginStatus(res.data.message)
+                setloginStatus(res.data.message)
                 } else {
                     navigate('/');
                 }
 
             })
     }
-
-    useEffect(() => {
+     useEffect(() => {
         getUser()
         .then((res) =>{
             console.log(res);
-            if(res.data.loggedin == true){
-                setloginStatus("You are already logged in")
-            }   
+            // if(res.data.loggedin == true){
+            //     navigate('/');
+            // }   
     })
           
       
     }, []);
+
+    // useEffect(() => {
+    //     getUser()
+    //     .then((res) =>{
+    //         console.log(res);
+    //         if(res.data.loggedin == true){
+    //             navigate('/');
+    //         }   
+    // })
+          
+      
+    // }, []);
     
     
     return (

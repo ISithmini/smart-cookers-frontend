@@ -11,12 +11,14 @@ export const logIn = (email: string , password: string) => {
 };
 
 export const getUser = () => {
-    return axios.get('http://localhost:8000/user/login')
+    return axios.get('http://localhost:8000/user/user/info')
 }
 
 export const logOut = () => {
     return axios.get("http://localhost:8000/user/logout");
 };
+
+
 
 // export const addProduct = (data: object) => {
 //     axios({

@@ -6,49 +6,50 @@ import Cookie from 'js-cookie';
 export const AuthContext = createContext(Auth);
 
 export const useAuthContext = () => {
-    return useContext(AuthContext);
+  return useContext(AuthContext);
 }
 
-type AuthContextProps = {
-        token : string
+interface AuthContextProviderProps {
+  
 }
+ 
+const AuthContextProvider: React.FunctionComponent<AuthContextProviderProps> = () => {
 
-const AuthContextProvider = (AuthContextProps) => {
+  const userReducer = (state, action) => {
+    switch (action.type) {
+      case 'GET_USER':
+        let token = jwt_decode(Cookie.get('regdata'));
 
-    
-
-    const userReducer = (state, action) => {
-        switch (action.type) {
-          case 'GET_USER':
-            let token = jwt_decode(Cookie.get('regdata'));
-            return {
-              id: token.id,
-              email: token.email,
-            }
-          case 'REMOVE_USER':
-            return action.user
-          default:
-            return token
+        return {
+          id: token.id,
+          role: token.role,
         }
-      }
-    
-      const [user, dispatch] = useReducer(userReducer, '', () => {
-        let token = Cookie.get('regdata');
-        if (token) {
-          let user = jwt_decode(token);
-          return {
-            id: user.id,
-            email: user.email
-          }
-        } else
-          return '';
-    
-      });
-      return (
-        <AuthContext.Provider value={{ user, dispatch }} >
-          {children}
-        </AuthContext.Provider>
-      )
-}
+      case 'REMOVE_USER':
+        return action.user
+      default:
+        return token
+    }
+  }
 
+  const [user, dispatch] = useReducer(userReducer, '', () => {
+    let token = Cookie.get('regdata');
+    if (token) {
+      let user = jwt_decode(token);
+      return {
+        id: user.id,
+        role: user.role,
+      }
+    } else
+      return '';
+
+  });
+
+  return ( 
+    <AuthContext.Provider value={{ user, dispatch }} >
+    {props.children}
+  </AuthContext.Provider>
+
+   );
+}
+ 
 export default AuthContextProvider;

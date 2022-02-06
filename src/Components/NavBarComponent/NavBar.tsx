@@ -46,11 +46,6 @@ const NavBar = () => {
                                 Log In
                             </Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/login" className="nav-links-mobile" onClick={closeMobileMenu}>
-                                Log In
-                            </Link>
-                        </li>
                     </ul>
                     <Link to="/inventory" className="nav-links">
                         Inventory
