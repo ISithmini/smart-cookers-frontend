@@ -1,6 +1,7 @@
 import "./login.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { logIn } from "../../Services/Api/UserServices/UserApi";
+import { getUser } from "../../Services/Api/UserServices/UserApi";
 import { useNavigate } from "react-router-dom";
 
 
@@ -16,11 +17,6 @@ const Login: React.FunctionComponent<LoginProps> = () => {
         e.preventDefault();
         console.log(email);
 
-        var data = {
-            "email": email,
-            "password": password,
-        }
-
         logIn(email, password)
             .then((res) => {
                 //console.log(res.data.message);
@@ -34,6 +30,19 @@ const Login: React.FunctionComponent<LoginProps> = () => {
             })
     }
 
+    useEffect(() => {
+        getUser()
+        .then((res) =>{
+            console.log(res);
+            if(res.data.loggedin == true){
+                setloginStatus("You are already logged in")
+            }   
+    })
+          
+      
+    }, []);
+    
+    
     return (
         <>
             <div className="LoginPage">

@@ -27,11 +27,12 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                     <label className="form-label">
                         <b>Select an Outlet &nbsp;</b>
                     </label>
-                    <select className="form-control">
-                        <option selected>Colombo</option>
-                        <option selected>Gampaha</option>
-                        <option selected>Galle</option>
-                        <option selected>Kalutara</option>
+                    <select className="form-control" defaultValue={'DEFAULT'}>
+                        <option value='DEFAULT' disabled> Choose an outlet</option>
+                        <option value='colombo'>Colombo</option>
+                        <option value='gampaha' >Gampaha</option>
+                        <option  value='galle'>Galle</option>
+                        <option value='kalutara'>Kalutara</option>
                     </select>
                 </div>
                 <ProductDisplay />

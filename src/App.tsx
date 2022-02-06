@@ -25,7 +25,7 @@ const App: React.FunctionComponent<IAppProps> = () => {
       <BrowserRouter>
           <NavBar />
           <Routes >
-            <Route path="/" element={<Home />} />
+            <Route path="/"  element={<Home />} />
             <Route path="/about-us" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/inventory" element={<Inevntory />} />
