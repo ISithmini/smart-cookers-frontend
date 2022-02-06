@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ProductContext } from '../../../Context/ProductContext';
 import ProductDisplay from "../../../Containers/HomeContainer/ProductDisplay";
-import { getOneProduct } from '../../../Services/ProductService/ProductApi'
+import { getOneProduct } from '../../../Services/Api/ProductService/ProductApi'
 import '../OneProduct/OneProductDisplay.css';
 
 

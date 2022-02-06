@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { addProduct } from '../../../Services/ProductService/ProductApi';
+import { addProduct } from '../../../Services/Api/ProductService/ProductApi';
 import './RegisterNewProduct.css'
 import { storage } from '../../../Services/Firebase/firebase'
 import { Link, useNavigate } from 'react-router-dom';
