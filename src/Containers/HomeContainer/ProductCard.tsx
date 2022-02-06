@@ -24,28 +24,26 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
     return (
         <div className="col-md-3">
             {/* <div className="card">
-  <img className="card-img-top w-60 p-2 h-50" src={props.product.image} alt="Card image cap"/>
-  <div className="card-body">
-    <h5 className="card-title">{props.product.Pname}</h5>
-    <p className="card-text">
-    <div className='text-danger'>
+                <img className="card-img-top mw-60 p-2 mh-50" src={props.product.image} alt="Card image cap" />
+                <div className="card-body">
+                    <h5 className="card-title">{props.product.Pname}</h5>
+                    <p className="card-text">
+                        <div className='text-danger'>
                             Rs. {props.product.Price}
                         </div><br />
-                        
-        
-        </p>
-        <Link to={`/view-products/id=${props.product.id}`}>
-                            <button className="buy-btn" onClick={() => {
-                                <OneProductDisplay />
-                            }}>
-                                Buy Now
+                    </p>
+                    <Link to={`/view-products/id=${props.product.id}`}>
+                        <button className="buy-btn" onClick={() => {
+                            <OneProductDisplay />
+                        }}>
+                            Buy Now
 
-                            </button>
-                            </Link>
-  </div>
-</div> */}
+                        </button>
+                    </Link>
+                </div>
+            </div> */}
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={props.product.image} className='img w-60 p-2 h-50' />
+                <Card.Img variant="top" src={props.product.image} className='img mw-50 p-2 mh-40' />
                 <Card.Body>
                     <Card.Title> {props.product.Pname}</Card.Title>
                     <Card.Text>

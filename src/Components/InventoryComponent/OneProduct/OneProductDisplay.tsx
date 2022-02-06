@@ -25,7 +25,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
 
     const [prod, setProd] = useState<prod | null>(null);
 
-    let { id } = useParams();
+    let {id} = useParams();
 
     //const product = useContext(ProductContext);
 
@@ -93,7 +93,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
                             <h6>Photo</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <img src={prod?.image} className="w-25 p-3 h-50" />
+                            <img src={prod?.image} className="w-25 p-3 h-50" alt="image"/>
                         </div>
                     </div>
 

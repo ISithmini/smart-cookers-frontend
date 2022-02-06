@@ -1,7 +1,7 @@
 import axios from "axios";
 //export const baseURL = "http://localhost:8000/";
 
-axios.defaults.withCredentials = true;
+//axios.defaults.withCredentials = true;
 
 export const logIn = (email: string , password: string) => {
     console.log(email, password);
@@ -11,7 +11,7 @@ export const logIn = (email: string , password: string) => {
 };
 
 export const getUser = () => {
-    return axios.get('http://localhost:8000/user/user/info')
+    return axios.get('http://localhost:8000/user/info');
 }
 
 export const logOut = () => {

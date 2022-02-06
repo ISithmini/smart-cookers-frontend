@@ -3,7 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import React, { useState, useEffect } from 'react';
 import ProductDisplay from '../../Containers/HomeContainer/ProductDisplay';
 import { Link } from 'react-router-dom';
-
+import {getUser} from '../../Services/Api/UserServices/UserApi'
 
 
 interface HomeComponentProps { }
@@ -13,6 +13,12 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
     const handleClick = () => setClick(true);
     const closeMobileMenu = () => setClick(false);
+
+    // useEffect(() => {
+    //    // console.log(document.querySelectorAll("p > div"))
+      
+    //   }, []);
+      
 
     return (
         <>

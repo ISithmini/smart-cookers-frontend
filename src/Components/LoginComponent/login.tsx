@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { logIn } from "../../Services/Api/UserServices/UserApi";
 import { getUser } from "../../Services/Api/UserServices/UserApi";
 import { useNavigate } from "react-router-dom";
+import Cookie from 'js-cookie';
 
 
 interface LoginProps { }
@@ -29,17 +30,9 @@ const Login: React.FunctionComponent<LoginProps> = () => {
 
             })
     }
-     useEffect(() => {
-        getUser()
-        .then((res) =>{
-            console.log(res);
-            // if(res.data.loggedin == true){
-            //     navigate('/');
-            // }   
-    })
-          
-      
-    }, []);
+
+    
+
 
     // useEffect(() => {
     //     getUser()

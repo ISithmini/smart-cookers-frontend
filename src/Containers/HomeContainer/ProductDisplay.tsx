@@ -17,7 +17,6 @@ const ProductDisplay: React.FunctionComponent<ProductDisplayProps> = () => {
       .catch(err => {
         console.log(err);
       });
-
   }, []);
 
   return (
@@ -31,9 +30,7 @@ const ProductDisplay: React.FunctionComponent<ProductDisplayProps> = () => {
         })}
 
       </div>
-
     </>
-
   );
 }
 

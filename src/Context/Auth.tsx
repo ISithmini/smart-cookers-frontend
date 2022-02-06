@@ -1,5 +1,4 @@
 export const Auth = {
-        id: Number,
-        email : String,
-
+          id: Number,
+        role : String
 }
