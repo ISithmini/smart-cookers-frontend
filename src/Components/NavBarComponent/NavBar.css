@@ -2,21 +2,21 @@
   background: linear-gradient(90deg, rgb(1, 0, 36) 0%, rgb(0, 0, 0) 100%);
   height: 80px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
-  position: sticky;
+  /* position: fixed !important; */
   top: 0;
+  left: 0;
   z-index: 999;
+  transition: 0.2s;
   font-family: "Montserrat-Regular";
 }
 
 .navbar-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 80px;
   max-width: 1500px;
+  
 }
 
 .navbar-title{
@@ -31,123 +31,129 @@
 
 }
 
+.menu-icon {
+  margin-left: 200px ;
+  color: #fff;
+  font-size: 1.2em;
+  display: none;
+}
 
 .nav-menu {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 10px;
-  list-style: none;
-  text-align: center;
-  width: 60vw;
-  justify-content: end;
-  margin-right: 2rem;
-}
-
-.nav-item {
-  height: 80px;
-}
-
-.nav-links {
-  color: #fff;
+  color: #242424;
   display: flex;
+  width: max-content;
+  float: right;
   align-items: center;
+  justify-content: space-between;
+  transition: 0.3s;
+}
+
+.nav-menu ul {
+  padding-left: 0;
+}
+
+.nav-menu-icon-sec {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-button-section {
+  margin-left: 0px;
+  display: flex;
+}
+
+.menu-item {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1.2em;
+}
+
+.nav-menu-link {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  height: 100%;
+  transition: 0.3s;
 }
 
-.nav-links:hover {
-  border-bottom: 4px solid #fff;
-  transition: all 0.2s ease-out;
+.nav-menu-link:hover {
+  padding-bottom: 5px;
+  text-decoration: none;
+  color: rgb(212, 212, 212);
+  border-bottom: solid 2px rgb(212, 212, 212);
 }
 
-
-.nav-links-mobile {
-  display: none;
+.nav-menu-links.active {
+  color: #fff;
+  border-bottom: solid 2px rgb(255, 255, 255);
 }
 
-.menu-icon {
-  display: none;
+.nav-menu-link.notification-badge {
+  display: flex;
 }
 
-@media screen and (max-width: 960px) {
-  .NavbarItems {
-    position: relative;
+@media only screen and (max-width: 1300px) {
+  .navbar-container {
+    padding-left: 80px;
+    padding-right: 80px;
   }
+}
 
-  .nav-menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 90vh;
-    position: absolute;
-    top: 80px;
-    left: -100%;
-    opacity: 1;
-    transition: all 0.5s ease;
+@media only screen and (max-width: 1400px) {
+  .navbar-container {
+    padding-left: 100px;
+    padding-right: 100px;
   }
+}
 
-  .nav-menu.active {
-    background: #000622;
-    left: 0;
-    opacity: 1;
-    transition: all 0.5s ease;
-    z-index: 1;
-  }
-
-  .nav-links {
-    text-align: center;
-    padding: 2rem;
-    width: 100%;
-    display: table;
-  }
-
-  .nav-links:hover {
-    background-color: #fff;
-    color: #242424;
-    border-radius: 0;
-  }
-
-  .navbar-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(25%, 50%);
-    
+@media only screen and (max-width: 991px) {
+  .navbar-container {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .menu-icon {
-    color: #fff;
     display: block;
+  }
+
+  .nav-menu {
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    left: -100vw;
+    width: 100vw;
+    height: calc(100vh - 80px);
+    top: 80px;
+    background-color: rgb(1, 0, 36);
   }
 
-  .nav-links-mobile {
+  .menu-button-section {
+    margin-left: 0px;
     display: block;
-    text-align: center;
-    margin: 2rem auto;
-    border-radius: 4px;
-    width: 80%;
-    text-decoration: none;
-    font-size: 1.2rem;
-    background-color: transparent;
-    color: #fff;
-    padding: 14px 20px;
-    border: 1px solid #fff;
-    transition: all 0.3s ease-out;
+    padding: 30px;
+    padding-left: 25px !important;
+    box-sizing: border-box;
+    border-radius: 10px;
   }
 
-  .nav-links-mobile:hover {
-    background: #fff;
-    color: #242424;
-    transition: 250ms;
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .menu-item {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgb(179, 179, 179);
   }
 }
+
 
 .btn{
   display: block;
@@ -159,7 +165,7 @@
     background-color: transparent;
     color: #fff;
     padding: 5px 5px;
-    border: 1px solid #fff;
+    border: 1px solid rgb(255, 255, 255);
     transition: all 0.3s ease-out;
 }
 .btn:hover {

@@ -1,17 +1,26 @@
 import "./login.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { logIn } from "../../Services/Api/UserServices/UserApi";
 import { getUser } from "../../Services/Api/UserServices/UserApi";
 import { useNavigate } from "react-router-dom";
 import Cookie from 'js-cookie';
+import jwt_decode from "jwt-decode";
+import { AuthContext } from "../../Context/AuthContext";
 
 
 interface LoginProps { }
+
+
+type userToken = {
+    id: number,
+    role : string
+  }
 
 const Login: React.FunctionComponent<LoginProps> = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginStatus, setloginStatus] = useState("");
+    const {dispatch} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleSubmit = (e: React.ChangeEvent<any>) => {
@@ -22,14 +31,18 @@ const Login: React.FunctionComponent<LoginProps> = () => {
                 if (res.data.message) {
                 setloginStatus(res.data.message)
                 } else {
+                    console.log(res.data.token)
+                    // const cookie = Cookie.get('regdata');
+                    // console.log(cookie)
+                    // let token = jwt_decode<userToken>(cookie || '') || null;
+                    // console.log(token)
+
+                    dispatch({type:"GET_USER"})
                     navigate('/');
                 }
 
             })
     }
-
-    
-
 
     // useEffect(() => {
     //     getUser()
@@ -87,6 +100,7 @@ const Login: React.FunctionComponent<LoginProps> = () => {
                                     name="password"
                                     id="password"
                                     placeholder="Enter Password"
+                                    autoComplete="on"
                                     onChange={(e) => {
                                         setPassword(e.target.value);
                                     }}

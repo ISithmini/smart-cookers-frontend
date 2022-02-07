@@ -1,52 +1,59 @@
-import React, {  createContext, useContext, useReducer, useState } from 'react';
+import React, {  createContext, useContext, useReducer, useState, Dispatch } from 'react';
 //import { Auth } from './Auth';
 //import jwt_decode from 'jwt-decode';
 import jwt_decode, { InvalidTokenError, JwtPayload } from 'jwt-decode'
 import Cookie from 'js-cookie';
+import {AuthReducer} from './AuthReducer';
 
 type userToken = {
   id: number,
   role : string
 }
 
-type actionType = {
-  type : 'GET_USER' | 'REMOVE_USER',
-  user : {
-    id: number,
-  role : string
-    }
-}
-
-
-const userInitialState : userToken = { id: 0 , role:''};
-
-export const AuthContext = createContext(userInitialState);
-
-// export const useAuthContext = () => {
-//   return useContext(AuthContext);
+// type actionType = {
+//   type : 'GET_USER' | 'REMOVE_USER',
+//   user : {
+//     id: number,
+//   role : string
+//     }
 // }
 
-interface AuthContextProviderProps {
-  children:React.ReactNode
-}
-
-// interface contextType {
+// type contextType = {
 //   dispatch: React.Dispatch<any>,
 //     user: {
 //       id: number,
 //   role : string
 
-//     }
-  
+//     }  
 // }
 
-const AuthContextProvider = ({children,}:AuthContextProviderProps) => {
+const userInitialState : userToken = { id: 0 , role:''};
 
+// export const AuthContext = createContext({user : userInitialState; dispatch : Dispatch<AuthReducer>;});
+export const AuthContext= createContext<{
+  user: userToken;
+  dispatch: Dispatch<any>;
+}>({
+  user: userInitialState,
+  dispatch: () => null
+});
+
+export const useAuthContext = () => {
+  return useContext(AuthContext);
+}
+
+interface AuthContextProviderProps {
+  children:React.ReactNode
+}
+
+
+
+const AuthContextProvider = ({children,}:AuthContextProviderProps) => {
 
   //const [ auth, setAuth] = useState();
   
 
-  const userReducer = (state : userToken, action : actionType) => {
+  const userReducer = (state : any, action : any) => {
 
     switch (action.type) {
       case 'GET_USER':
@@ -60,7 +67,7 @@ const AuthContextProvider = ({children,}:AuthContextProviderProps) => {
       case 'REMOVE_USER':
         return action.user
       default:
-        return token;
+        return "";
     }
   }
 
@@ -77,10 +84,9 @@ const AuthContextProvider = ({children,}:AuthContextProviderProps) => {
 
   });
 
-  const value = {user, dispatch};
 
   return ( 
-    <AuthContext.Provider value ={value as contextType} >
+    <AuthContext.Provider value ={ {user, dispatch}} >
     {children}
   </AuthContext.Provider>
 

@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { FaTimes, FaBars } from "react-icons/fa";
 import './NavBar.css';
+import { AuthContext } from '../../Context/AuthContext';
+import { logOut } from '../../Services/Api/UserServices/UserApi';
 
 
 const NavBar = () => {
+    const { user, dispatch } = useContext(AuthContext);
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(false);
 
@@ -25,34 +28,74 @@ const NavBar = () => {
 
     window.addEventListener('resize', showButton);
 
+    const handleLogin = async () => {
+        await logOut().then((res) => {
+            //console.log(res);
+            dispatch({ type: "REMOVE_USER", user: "" });
+        });
+    };
+
+    const renderLoginButton = () => {
+        if (!user) {
+            return (
+                <li className="menu-item" onClick={closeMobileMenu}>
+                    <Link className="nav-menu-link" to="/Login">
+                    <button className="btn">Log In </button>
+                    </Link>
+                </li>
+            );
+        } else {
+            return (
+                <li className="menu-item" onClick={handleLogin} >
+                    <Link className="nav-menu-link" to="/" >
+                    <button className="btn">Log Out</button>
+                    </Link>
+                </li>
+            );
+        }
+    };
+
     return (
         <>
             <nav className='navbar'>
                 <div className="navbar-container">
                     <Link to="/" className="navbar-title" onClick={closeMobileMenu}>
                         SMARTCookers
-                    </Link>
+                    </Link> 
                     <div className="menu-icon" onClick={handleClick}>
                         {click ? <FaTimes /> : <FaBars />}
                     </div>
-                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                        <li className="nav-item">
-                            <Link to="/inventory" className="nav-links-mobile" onClick={closeMobileMenu}>
-                                Inventory
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/login" className="nav-links-mobile" onClick={closeMobileMenu}>
-                                Log In
-                            </Link>
-                        </li>
-                    </ul>
-                    <Link to="/inventory" className="nav-links">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div className={click ? 'nav-menu active' : 'nav-menu'}>
+                        <ul className="menu-button-section" >
+                            <li className="menu-item">
+                                <Link to="/inventory" className="nav-menu-link" onClick={closeMobileMenu}>
+                                    Inventory
+                                </Link>
+                            </li>
+                            <li className="menu-item">
+                                <Link to="/profile" className="nav-menu-link" onClick={closeMobileMenu}>
+                                    Profile
+                                </Link>
+                            </li>
+                            {/* <li className="menu-item">
+                                <Link to="/login" className="nav-menu-link" onClick={closeMobileMenu}>
+                                    Log In
+                                </Link>
+                            </li> */}
+
+
+                            {renderLoginButton()}
+                        </ul>
+
+                    </div>
+
+                    {/* <Link to="/inventory" className="nav-links">
                         Inventory
-                    </Link>
-                    <Link to='/login' className="nav-links">
+                    </Link> */}
+                    {/* <Link to='/login' className="nav-links">
                         {button && <button className="btn">Log In </button>}
-                    </Link>
+                    </Link> */}
                 </div>
 
             </nav>
