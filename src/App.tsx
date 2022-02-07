@@ -22,7 +22,6 @@ const App: React.FunctionComponent<IAppProps> = () => {
 
   return (
     <div className="App">
-      <AuthContextProvider>
       <BrowserRouter>
           <NavBar />
           <Routes >
@@ -36,7 +35,6 @@ const App: React.FunctionComponent<IAppProps> = () => {
             <Route path='/view-products/id=:id' element={<OneProductDisplay/>} />
           </Routes>
       </BrowserRouter>
-      </AuthContextProvider>
 
     </div>
   )

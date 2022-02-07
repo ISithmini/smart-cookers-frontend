@@ -48,7 +48,6 @@ const Product: React.FunctionComponent<productporps> = (props) => {
 
                 <button className="btn-dark" onClick={() => {
                     <OneProductDisplay />
-                    console.log( props.product.id);
                 } }>
                     View Product
                 </button>

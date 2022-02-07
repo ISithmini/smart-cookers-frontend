@@ -1,11 +1,50 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css';
+import jwt_decode from 'jwt-decode'
+import Cookie from 'js-cookie';
+import { getUser, getUserDetails } from '../../Services/Api/UserServices/UserApi';
 
 interface ProfileProps {
 
 }
+type userToken = {
+    id: number,
+    role : string
+  }
+
+type user= {
+    Name: string,
+    Email: string,
+    NIC: Number,
+    Role: Number,
+
+}
+ 
 
 const Profile: React.FunctionComponent<ProfileProps> = () => {
+
+    const [id, setId] = useState(0);
+    const [user, setUser] = useState<user | null>(null);
+
+    // useEffect(() => {
+    //     let cookie = Cookie.get('regdata');
+    //     let token = jwt_decode<userToken>(cookie || '') || null;
+    //     console.log(token)
+    //     setId(token.id);
+    //     getUserDetails(id).then(()=>{
+
+    //     })
+
+
+
+    // }, []);
+    
+       
+
+
+    
+
     return (
         <div>
             <div className="profile">
@@ -66,7 +105,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                     <div className="row">
                         <div className="col-sm-8"></div>
                         <div className="col-sm-4 ">
-                            <Link to='/profile/edit' className='btn-edit'>
+                            <Link to='/profile/edit' className=''>
                                 <button className="btn">Edit Profile</button>
                             </Link>
 
@@ -74,8 +113,8 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                     </div>
                     <div className="row">
                         <div className="col-sm-8"></div>
-                        <div className="col-sm-4 btn-edit">
-                            <Link to='/profile/transaction-hostory' className='btn-edit'>
+                        <div className="col-sm-4 ">
+                            <Link to='/profile/transaction-hostory' className=''>
                                 <button className="btn">View Transaction Histroy</button>
                             </Link>
                         </div>

@@ -14,7 +14,5 @@ export const getOneProduct = (id: string) => {
 
 
 export const addProduct = (data: object) => {
-    console.log("adddddd");
-
     return axios.post(mockapi + '/products/', data);
 }

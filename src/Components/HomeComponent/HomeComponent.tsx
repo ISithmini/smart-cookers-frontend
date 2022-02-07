@@ -20,9 +20,7 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
     const closeMobileMenu = () => setClick(false);
 
     // useEffect(() => {
-    //    console.log(user.id);
-       
-      
+    //    console.log(user.id);   
     //   }, []);
       
 

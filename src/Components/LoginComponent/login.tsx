@@ -16,13 +16,10 @@ const Login: React.FunctionComponent<LoginProps> = () => {
 
     const handleSubmit = (e: React.ChangeEvent<any>) => {
         e.preventDefault();
-        console.log(email);
 
         logIn(email, password)
             .then((res) => {
-                console.log(res.data);
                 if (res.data.message) {
-                    console.log(res.data.message);
                 setloginStatus(res.data.message)
                 } else {
                     navigate('/');

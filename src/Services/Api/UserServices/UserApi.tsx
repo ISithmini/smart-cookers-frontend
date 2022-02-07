@@ -4,7 +4,6 @@ import axios from "axios";
 //axios.defaults.withCredentials = true;
 
 export const logIn = (email: string , password: string) => {
-    console.log(email, password);
     return axios.post('http://localhost:8000/user/login', {
         email, password
     })
@@ -12,6 +11,11 @@ export const logIn = (email: string , password: string) => {
 
 export const getUser = () => {
     return axios.get('http://localhost:8000/user/info');
+}
+
+export const getUserDetails = (id : number) => {
+    console.log(id);
+    return axios.get(`http://localhost:8000/user/details/`);
 }
 
 export const logOut = () => {

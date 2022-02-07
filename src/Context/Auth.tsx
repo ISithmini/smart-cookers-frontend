@@ -1,4 +1,4 @@
 export const Auth = {
-          id: Number,
-        role : String
+          id: any ,
+        role : any
 }

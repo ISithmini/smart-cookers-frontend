@@ -12,7 +12,6 @@ const ProductDisplay: React.FunctionComponent<ProductDisplayProps> = () => {
   useEffect(() => {
     getProducts().then((res: any) => {
       setProducts(res.data);
-      //console.log(products);
     })
       .catch(err => {
         console.log(err);

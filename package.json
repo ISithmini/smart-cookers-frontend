@@ -29,5 +29,5 @@
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
   },
-  "proxy" : "https://61f8a8f7783c1d0017c4470d.mockapi.io"
+  "proxy": "https://61f8a8f7783c1d0017c4470d.mockapi.io"
 }

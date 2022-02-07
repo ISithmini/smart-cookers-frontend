@@ -42,12 +42,11 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
 
        await addProduct(data);
     //    .then( () => {
-    //        console.log("sfsdgdfgf");
     //        if(productImg!="../../../Assets/images/no-image"){
     //         navigate(-1);
     //        }
     //    });
-    //console.log("sdfdgf");
+
     
     goBack();
 
@@ -63,7 +62,6 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
     const handleChange = (e: any) => {
         if (e.target.files[0]) {
             setImg(e.target.files[0]);
-            console.log(img);
 
 
         }
@@ -73,7 +71,6 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
 
     const handleUpload = async () => {
         const uploadTask = storage.ref(`images/${img.name}`).put(img);
-        console.log(uploadTask);
 
         uploadTask.on(
             "state_changed",
@@ -93,7 +90,6 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                     .getDownloadURL()
                     .then(productImg => {
                         setproductImg(productImg);
-                        console.log(productImg);
 
                     });
             }

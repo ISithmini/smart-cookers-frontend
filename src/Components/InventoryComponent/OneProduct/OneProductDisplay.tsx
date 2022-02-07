@@ -27,28 +27,18 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
 
     let {id} = useParams();
 
-    //const product = useContext(ProductContext);
-
-    console.log(id);
-
 
     useEffect(() => {
         //getProd('5');
         getOneProduct(id)
             .then((res: any) => {
                 setProd(res.data);
-                console.log(res.data);
             })
             .catch(err => {
                 console.log(err);
             });
 
     }, []);
-
-
-
-
-    //console.log(prod.id);
 
 
     return (
