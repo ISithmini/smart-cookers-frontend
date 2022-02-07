@@ -27,7 +27,7 @@ In the project directory, you can run:
 | Requirments  | Progress|
 | ------------- | ------------- |
 | Login  | Completed  |
-| Role-base Authentication  | In progress  |
+| Role-base Authentication  | Completed  |
 | Inventory-Add Product  | Completed |
 | Inventoy-View All Products  | Completed |
 | Inventory-Detailed View of PRoducts | Completed  |

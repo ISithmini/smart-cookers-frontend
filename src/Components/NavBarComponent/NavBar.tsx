@@ -55,6 +55,38 @@ const NavBar = () => {
         }
     };
 
+    const renderProfile = () => {
+        if (user) {
+            return (
+                <li className="menu-item" onClick={closeMobileMenu}>
+                    <Link className="nav-menu-link" to="/profile">
+                        Profile
+                    </Link>
+                </li>
+            );
+        } else {
+            return <span></span>;
+        }
+    };
+
+    const renderAdmin = () => {
+        if (user) {
+            if(user.role=='admin'){
+                return (
+                    <li className="menu-item" onClick={closeMobileMenu}>
+                        <Link className="nav-menu-link" to="/inventory">
+                            Inventory
+                        </Link>
+                    </li>
+                );
+            }
+            
+        } else {
+            return <span></span>;
+        }
+    };
+
+
     return (
         <>
             <nav className='navbar'>
@@ -68,34 +100,29 @@ const NavBar = () => {
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div className={click ? 'nav-menu active' : 'nav-menu'}>
                         <ul className="menu-button-section" >
-                            <li className="menu-item">
+                            {/* <li className="menu-item">
                                 <Link to="/inventory" className="nav-menu-link" onClick={closeMobileMenu}>
                                     Inventory
                                 </Link>
-                            </li>
-                            <li className="menu-item">
+                            </li> */}
+                            {/* <li className="menu-item">
                                 <Link to="/profile" className="nav-menu-link" onClick={closeMobileMenu}>
                                     Profile
                                 </Link>
-                            </li>
+                            </li> */}
                             {/* <li className="menu-item">
                                 <Link to="/login" className="nav-menu-link" onClick={closeMobileMenu}>
                                     Log In
                                 </Link>
                             </li> */}
-
-
+                            {renderProfile()}
+                            {renderAdmin()}
                             {renderLoginButton()}
+
+                            
                         </ul>
 
                     </div>
-
-                    {/* <Link to="/inventory" className="nav-links">
-                        Inventory
-                    </Link> */}
-                    {/* <Link to='/login' className="nav-links">
-                        {button && <button className="btn">Log In </button>}
-                    </Link> */}
                 </div>
 
             </nav>
