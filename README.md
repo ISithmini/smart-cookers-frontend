@@ -9,12 +9,12 @@ In the project directory, you can run:
 ## Folder Structure 
 
 ├── src                   
-   ├── Assets           # Includes images and fonts 
-   ├── Components       # Includes UI components
-   ├── Containers       # Stateful components
-   ├── Context          # 
-   ├── Helpers          # Includes Routelocks and Error Handling
-   └── Services         # Includes Api and Firabase configurations
+│  ├── Assets           # Includes images and fonts 
+│  ├── Components       # Includes UI components
+│  ├── Containers       # Stateful components
+│  ├── Context          # 
+│  ├── Helpers          # Includes Routelocks and Error Handling
+│  └── Services         # Includes Api and Firabase configurations
 
 ## Tools Used
 
