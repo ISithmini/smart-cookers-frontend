@@ -6,15 +6,16 @@ import { Link } from 'react-router-dom';
 import {getUser} from '../../Services/Api/UserServices/UserApi'
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
+import { getProductsInOutlet } from '../../Services/Api/ProductService/ProductApi';
 
 
 interface HomeComponentProps { }
 
 const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
-    const { user , dispatch} = useContext(AuthContext);
 
     const [click, setClick] = useState(false);
+    const [outlet, setoutlet] = useState("");
 
     const handleClick = () => setClick(true);
     const closeMobileMenu = () => setClick(false);
@@ -22,6 +23,13 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
     // useEffect(() => {
     //    console.log(user.id);   
     //   }, []);
+
+    const handleOutlet = () => {
+        getProductsInOutlet(outlet).then((res) => {
+            console.log(res);
+
+        })
+    }
       
 
     return (
@@ -37,12 +45,16 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                     <label className="form-label">
                         <b>Select an Outlet &nbsp;</b>
                     </label>
-                    <select className="form-control" defaultValue={'DEFAULT'}>
+                    <select className="form-control" defaultValue={'DEFAULT'} onChange= { (e) => {
+                        setoutlet(e.target.value);
+                        console.log(outlet)
+                        handleOutlet();
+                    }}>
                         <option value='DEFAULT' disabled> Choose an outlet</option>
-                        <option value='colombo'>Colombo</option>
-                        <option value='gampaha' >Gampaha</option>
-                        <option  value='galle'>Galle</option>
-                        <option value='kalutara'>Kalutara</option>
+                        <option value='Colombo'>Colombo</option>
+                        <option value='Gampaha' >Gampaha</option>
+                        <option value='Galle'>Galle</option>
+                        <option value='Kalutara'>Kalutara</option>
                     </select>
                 </div>
                 <ProductDisplay />

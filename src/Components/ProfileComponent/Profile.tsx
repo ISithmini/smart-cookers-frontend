@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css';
 import jwt_decode from 'jwt-decode'
 import Cookie from 'js-cookie';
 import { getUser, getUserDetails } from '../../Services/Api/UserServices/UserApi';
+import { AuthContext } from '../../Context/AuthContext';
 
 interface ProfileProps {
 
@@ -24,21 +25,19 @@ type user= {
 
 const Profile: React.FunctionComponent<ProfileProps> = () => {
 
-    const [id, setId] = useState(0);
-    const [user, setUser] = useState<user | null>(null);
+    const {user, dispatch} = useContext(AuthContext);
+    const [name, setname] = useState("");
+    const [email, setemail] = useState("");
+    const [NIC, setNIC] = useState("");
+    const [role, setrole] = useState("");
 
-    // useEffect(() => {
-    //     let cookie = Cookie.get('regdata');
-    //     let token = jwt_decode<userToken>(cookie || '') || null;
-    //     console.log(token)
-    //     setId(token.id);
-    //     getUserDetails(id).then(()=>{
+    let id = user.id
 
-    //     })
-
-
-
-    // }, []);
+    useEffect(() => {
+        getUserDetails(id).then((res)=>{
+            console.log(res.data)
+        })
+    }, []);
     
        
 
