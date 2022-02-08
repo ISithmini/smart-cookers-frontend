@@ -34,7 +34,7 @@ In the project directory, you can run:
 | Customer-View Products based on outlet | Completed   |
 | Customer-detailed view of a product |  Completed   |
 | Customer-Place Order |  In progress  |
-| Customer-View Profile |In progress |
+| Customer-View Profile |Completed |
 | Customer-Edit Profile |  In progress   |
 | Customer-View Transaction History |  In progress   |
 

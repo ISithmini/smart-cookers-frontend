@@ -11,39 +11,43 @@ interface ProfileProps {
 }
 type userToken = {
     id: number,
-    role : string
-  }
+    role: string
+}
 
-type user= {
+type user = {
     Name: string,
     Email: string,
     NIC: Number,
     Role: Number,
 
 }
- 
+
 
 const Profile: React.FunctionComponent<ProfileProps> = () => {
 
-    const {user, dispatch} = useContext(AuthContext);
+    const { user, dispatch } = useContext(AuthContext);
     const [name, setname] = useState("");
     const [email, setemail] = useState("");
     const [NIC, setNIC] = useState("");
     const [role, setrole] = useState("");
+    const [addresses, setaddresses] = useState([]);
 
     let id = user.id
 
     useEffect(() => {
-        getUserDetails(id).then((res)=>{
-            let {result} = res.data
-            console.log(res.data)
+        getUserDetails(id).then((res) => {
+            console.log(res.data[0]);
+            setaddresses(res.data[0])
+            setname(res.data[1].Name);
+            setemail(res.data[1].Email);
+            setNIC(res.data[1].NIC);
         })
     }, []);
-    
-       
 
 
-    
+
+
+
 
     return (
         <div>
@@ -56,7 +60,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                                 <h6>Full Name</h6>
                             </div>
                             <div className="col-sm-8">
-                                <h6 className="text-muted">Imasha Sithmini</h6>
+                                <h6 className="text-muted">{name}</h6>
                             </div>
                         </div>
                         <div className="row">
@@ -64,7 +68,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                                 <h6>Email</h6>
                             </div>
                             <div className="col-sm-8 ">
-                                <h6 className="text-muted">imashasithmini2@gmail.com</h6>
+                                <h6 className="text-muted">{email}</h6>
                             </div>
                         </div>
                         <div className="row">
@@ -72,33 +76,23 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                                 <h6>NIC</h6>
                             </div>
                             <div className="col-sm-8 ">
-                                <h6 className="text-muted">988472379V</h6>
+                                <h6 className="text-muted">{NIC}</h6>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-sm-4 text-center">
-                                <h6>Address 1</h6>
-                            </div>
-                            <div className="col-sm-8 ">
-                                <h6 className="text-muted">21/3a, Bandara Batawala, Bemmulla</h6>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-sm-4 text-center">
-                                <h6>Address 2</h6>
-                            </div>
-                            <div className="col-sm-8 ">
-                                <h6 className="text-muted">21/3a, Bandara Batawala, Bemmulla</h6>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-sm-4 text-center">
-                                <h6>Address 3</h6>
-                            </div>
-                            <div className="col-sm-8 ">
-                                <h6 className="text-muted">21/3a, Bandara Batawala, Bemmulla</h6>
-                            </div>
-                        </div>
+                            {addresses.map((address, index) => {
+                                return (
+                                    <div className="row">
+                                        <div className="col-sm-4 text-center">
+                                            <h6>Address {index+1}</h6>
+                                        </div>
+                                        <div className="col-sm-8 ">
+                                            <h6 className="text-muted">{address.Address}</h6>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+
+
 
 
                     </div>
