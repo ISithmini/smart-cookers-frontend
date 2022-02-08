@@ -52,7 +52,6 @@ const AuthContextProvider = ({children,}:AuthContextProviderProps) => {
 
   //const [ auth, setAuth] = useState();
   
-
   const userReducer = (state : any, action : any) => {
 
     switch (action.type) {

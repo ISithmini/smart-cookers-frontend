@@ -4,6 +4,7 @@ import { ProductContext } from '../../../Context/ProductContext';
 import ProductDisplay from "../../../Containers/HomeContainer/ProductDisplay";
 import { getOneProduct } from '../../../Services/Api/ProductService/ProductApi'
 import '../OneProduct/OneProductDisplay.css';
+import { AuthContext } from "../../../Context/AuthContext";
 
 
 interface OneProductDisplayProps {
@@ -20,16 +21,20 @@ type prod = {
 }
 
 const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () => {
-    const [user, setuser] = useState(true);
-
-
+    
+    const {user, dispatch} = useContext(AuthContext);
     const [prod, setProd] = useState<prod | null>(null);
+    const [userRole, setuserRole] = useState(false);
+
+    
 
     let {id} = useParams();
 
 
     useEffect(() => {
-        //getProd('5');
+        if(user.role == 'basic'){
+            setuserRole(true);
+        }
         getOneProduct(id)
             .then((res: any) => {
                 setProd(res.data);
@@ -88,7 +93,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = () =>
                     </div>
 
                 </div>
-                {user && <div className="row">
+                {userRole && <div className="row">
                     <div className="col-sm-8"></div>
                     <div className="col-sm-4 ">
                         <Link to='/order' >

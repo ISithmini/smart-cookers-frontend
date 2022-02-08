@@ -35,6 +35,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
 
     useEffect(() => {
         getUserDetails(id).then((res)=>{
+            let {result} = res.data
             console.log(res.data)
         })
     }, []);

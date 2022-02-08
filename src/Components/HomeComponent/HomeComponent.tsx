@@ -1,12 +1,9 @@
 import './HomeComponent.css';
-import Dropdown from 'react-bootstrap/Dropdown';
 import React, { useState, useEffect } from 'react';
 import ProductDisplay from '../../Containers/HomeContainer/ProductDisplay';
 import { Link } from 'react-router-dom';
-import {getUser} from '../../Services/Api/UserServices/UserApi'
-import { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthContext';
 import { getProductsInOutlet } from '../../Services/Api/ProductService/ProductApi';
+import { getProducts } from '../../Services/Api/ProductService/ProductApi'
 
 
 interface HomeComponentProps { }
@@ -16,21 +13,26 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
     const [click, setClick] = useState(false);
     const [outlet, setoutlet] = useState("");
+    const [products, setproducts] = useState([]);
 
-    const handleClick = () => setClick(true);
-    const closeMobileMenu = () => setClick(false);
-
-    // useEffect(() => {
-    //    console.log(user.id);   
-    //   }, []);
 
     const handleOutlet = () => {
         getProductsInOutlet(outlet).then((res) => {
-            console.log(res);
+            setproducts(res.data)
+            console.log(res.data);
 
         })
     }
-      
+
+    useEffect(() => {
+        getProducts().then((res: any) => {
+            setproducts(res.data);
+        })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
+
 
     return (
         <>
@@ -45,7 +47,7 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                     <label className="form-label">
                         <b>Select an Outlet &nbsp;</b>
                     </label>
-                    <select className="form-control" defaultValue={'DEFAULT'} onChange= { (e) => {
+                    <select className="form-control" defaultValue={'DEFAULT'} onChange={(e) => {
                         setoutlet(e.target.value);
                         console.log(outlet)
                         handleOutlet();
@@ -57,7 +59,15 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                         <option value='Kalutara'>Kalutara</option>
                     </select>
                 </div>
-                <ProductDisplay />
+                <div className="row xs-1 md-2 g-4">
+                    {products.map((item, index) => {
+                        return (
+                            <ProductDisplay product={item} key={index} />
+                        )
+
+                    })}
+
+                </div>
                 <div className='footer-container'>
                     <section className='footer-subscription'>
                         <p className='footer-subscription-heading'>

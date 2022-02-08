@@ -43,7 +43,6 @@ const Login: React.FunctionComponent<LoginProps> = () => {
 
             })
     }
-
     // useEffect(() => {
     //     getUser()
     //     .then((res) =>{

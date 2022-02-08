@@ -31,10 +31,10 @@ In the project directory, you can run:
 | Inventory-Add Product  | Completed |
 | Inventoy-View All Products  | Completed |
 | Inventory-Detailed View of PRoducts | Completed  |
-| Customer-View Products based on outlet |  In progress   |
-| Customer-detailed view of a product |  In progress   |
+| Customer-View Products based on outlet | Completed   |
+| Customer-detailed view of a product |  Completed   |
 | Customer-Place Order |  In progress  |
-| Customer-View Profile | Completed |
+| Customer-View Profile |In progress |
 | Customer-Edit Profile |  In progress   |
 | Customer-View Transaction History |  In progress   |
 
