@@ -40,7 +40,7 @@ const NavBar = () => {
             return (
                 <li className="menu-item" onClick={closeMobileMenu}>
                     <Link className="nav-menu-link" to="/Login">
-                    <button className="btn">Log In </button>
+                    <button className="button">Log In </button>
                     </Link>
                 </li>
             );
@@ -48,7 +48,7 @@ const NavBar = () => {
             return (
                 <li className="menu-item" onClick={handleLogin} >
                     <Link className="nav-menu-link" to="/" >
-                    <button className="btn">Log Out</button>
+                    <button className="button">Log Out</button>
                     </Link>
                 </li>
             );
@@ -69,15 +69,34 @@ const NavBar = () => {
         }
     };
 
-    const renderAdmin = () => {
+    const renderInventoryButton = () => {
         if (user) {
-            if(user.role=='admin'){
+            if(user.role=='admin' ||user.role=='inventory'){
                 return (
                     <li className="menu-item" onClick={closeMobileMenu}>
                         <Link className="nav-menu-link" to="/inventory">
                             Inventory
                         </Link>
                     </li>
+                    
+                );
+            }
+            
+        } else {
+            return <span></span>;
+        }
+    };
+
+    const renderSalesButton = () => {
+        if (user) {
+            if(user.role=='admin'||user.role=='sales' ){
+                return (
+                    <li className="menu-item" onClick={closeMobileMenu}>
+                        <Link className="nav-menu-link" to="/sales">
+                            Sales
+                        </Link>
+                    </li>
+                    
                 );
             }
             
@@ -97,34 +116,15 @@ const NavBar = () => {
                     <div className="menu-icon" onClick={handleClick}>
                         {click ? <FaTimes /> : <FaBars />}
                     </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div className={click ? 'nav-menu active' : 'nav-menu'}>
                         <ul className="menu-button-section" >
-                            {/* <li className="menu-item">
-                                <Link to="/inventory" className="nav-menu-link" onClick={closeMobileMenu}>
-                                    Inventory
-                                </Link>
-                            </li> */}
-                            {/* <li className="menu-item">
-                                <Link to="/profile" className="nav-menu-link" onClick={closeMobileMenu}>
-                                    Profile
-                                </Link>
-                            </li> */}
-                            {/* <li className="menu-item">
-                                <Link to="/login" className="nav-menu-link" onClick={closeMobileMenu}>
-                                    Log In
-                                </Link>
-                            </li> */}
                             {renderProfile()}
-                            {renderAdmin()}
-                            {renderLoginButton()}
-
-                            
+                            {renderInventoryButton()}
+                            {renderSalesButton()}
+                            {renderLoginButton()}           
                         </ul>
-
                     </div>
                 </div>
-
             </nav>
 
         </>

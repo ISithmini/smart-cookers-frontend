@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { ProductContext } from '../../../Context/ProductContext';
-import ProductDisplay from "../../../Containers/HomeContainer/ProductDisplay";
-import { addOrder, getOneProduct, getOneProductOutlet } from '../../../Services/Api/ProductService/ProductApi'
+import { useNavigate, useParams } from "react-router-dom";
+import { addOrder, getOneProductOutlet } from '../../../Services/Api/ProductService/ProductApi'
 import '../OneProduct/OneProductDisplay.css';
 import { AuthContext } from "../../../Context/AuthContext";
 import Modal from 'react-bootstrap/Modal';
@@ -54,15 +52,6 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
         if (user.role == 'basic') {
             setuserRole(true);
         }
-        // getOneProduct(id)
-        //     .then((res: any) => {
-        //         console.log(res.data)
-        //         setProd(res.data);
-
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     });
 
         getOneProductOutlet(id)
             .then((res: any) => {
@@ -94,11 +83,11 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
     return (
         <div className="profile">
             <div>
-                <h6 className="title text-white mb-4">Product Profile</h6>
+            <h5 className="title text-white">Product Profile</h5> <br/>
                 <div className="profile-container">
-                    <div className="row ">
+                    <div className="row">
                         <div className="col-sm-4 text-center">
-                            <h6>Product Name</h6>
+                            <h6>Product Name </h6>
                         </div>
                         <div className="col-sm-8">
                             <h6 className="text-muted">{prod?.Pname}</h6>
@@ -125,7 +114,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                             <h6>Quantity Available</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <h6 className="text-muted">{prod?.qtyAvailable}</h6>
+                            <h6 className="text-muted">{prod?.QtyAvailable}</h6>
                         </div>
                     </div>
                     <div className="row">
@@ -171,15 +160,15 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                     <div className="col-sm-7"></div>
                     <div className="col-sm-2">
                         {qunatitiyClick && 
-                         <button className='btn-secondary' onClick={() => navigate('/') }>Cancel Order</button>
+                         <button className='proceed-cancel' onClick={() => navigate('/') }>Cancel Order</button>
                         }
                     </div>
                     <div className="col-sm-3 ">
                     {!qunatitiyClick && 
-                         <button className='btn-primary' onClick={() => setclick(true)}>Proceed Order</button>
+                         <button className='proceed' onClick={() => setclick(true)}>Proceed Order</button>
                     }
                     {qunatitiyClick && 
-                         <button className='btn-success' onClick={() => {
+                         <button className='proceed-success' onClick={() => {
                             handleOrder()
                             setShow(true)
                          }}>Place Order</button>

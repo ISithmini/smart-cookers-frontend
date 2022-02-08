@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { getTransactionHistory } from "../../Services/Api/UserServices/OrderApi";
+import './UserTransactions.css'
 
 interface UserTransactionsProps {
 
@@ -29,7 +30,7 @@ const UserTransactions: React.FunctionComponent<UserTransactionsProps> = () => {
 
 
     return (
-        <>
+        <div className="profile">
         <div className="text-center"> <h5>Transaction History</h5></div>
             <div className="products-container">
                 <table className="table table-striped mt-5">
@@ -40,7 +41,6 @@ const UserTransactions: React.FunctionComponent<UserTransactionsProps> = () => {
                             <th scope="col"> Price</th>
                             <th scope="col"> Outlet Name </th>
                             <th scope="col"> Status</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,14 +52,6 @@ const UserTransactions: React.FunctionComponent<UserTransactionsProps> = () => {
                                     <td>{transactions[index].Price}</td>
                                     <td>{transactions[index].Outlet_Name}</td>
                                     <td>{transactions[index].Status}</td>
-                                    <td>
-
-                                        <button className="btn-dark" onClick={() => { }}>
-                                            View Product
-                                        </button>
-
-
-                                    </td>
                                 </tr>
 
                             )
@@ -73,7 +65,7 @@ const UserTransactions: React.FunctionComponent<UserTransactionsProps> = () => {
 
             </div>
 
-        </>
+        </div>
     );
 }
 

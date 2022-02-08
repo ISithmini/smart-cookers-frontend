@@ -1,8 +1,10 @@
 import blender from '../../Assets/images/blender.jpg';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './ProductDisplay.css';
 import OneProductDisplay from '../../Components/InventoryComponent/OneProduct/OneProductDisplay';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
 
 interface ProductCardProps {
 
@@ -21,24 +23,40 @@ type productporps = {
 };
 
 const ProductCard: React.FunctionComponent<productporps> = (props) => {
+
+    const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+
     return (
-        <div className="col-md-3">
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={props.product.image} className='img mw-50 p-2 mh-40' />
-                <Card.Body>
+        <div className="product-card col-md-3">
+            <Card style={{ width: '16rem' }} className="card">
+                <Card.Img variant="top" src={props.product.image} className="img"/>
+                <Card.Body className= "card-body">
                     <Card.Title> {props.product.Pname}</Card.Title>
                     <Card.Text>
                         <div className='text-danger'>
                             Rs. {props.product.Price}
                         </div><br />
-                        <Link to={`/view-products/id=${props.product.id}`}>
-                            <button className="buy-btn" onClick={() => {
-                                <OneProductDisplay/>
-                            }}>
-                                Buy Now
 
-                            </button>
-                        </Link>
+                        {user && 
+                        <Link to={`/view-products/id=${props.product.id}`}>
+                        <button className="buy-button" onClick={() => {
+                            <OneProductDisplay/>
+                        }}>
+                            Buy Now
+                        </button>
+                    </Link>
+                        
+                        }
+                        {!user && 
+
+                        <button className="buy-button" onClick={() => navigate('/login') }>
+                            Buy Now
+                        </button>
+                        
+                        }
+                        
                     </Card.Text>
                     
                 </Card.Body>

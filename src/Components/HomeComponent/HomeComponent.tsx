@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { getProductsInOutlet } from '../../Services/Api/ProductService/ProductApi';
 import { getProducts } from '../../Services/Api/ProductService/ProductApi'
 import { AuthContext } from '../../Context/AuthContext';
+import { CardGroup } from 'react-bootstrap';
 
 
 interface HomeComponentProps { }
@@ -16,7 +17,7 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
     const [outlet, setoutlet] = useState("");
     const [products, setproducts] = useState([]);
 
-    const {user, dispatch} = useContext(AuthContext);
+    const { user, dispatch } = useContext(AuthContext);
 
 
     const handleOutlet = () => {
@@ -39,35 +40,36 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
     return (
         <>
-            <div className="home-container">
-                <h2>Sri Lanka's Best Kitchen Appliances Provider</h2>
+        <div className="home-section">
+        <div className="home-container">
+                <div className="text-center"><h2>Sri Lanka's Best Kitchen Appliances Provider</h2></div>
                 <div className="home-description">
                     <p>Welcome to the largest kitchen applicances provider in Sri Lanka where you can get the best products with best quality!..
                         <br /> Click below to select the outlet nearest to your home and search for products.
                     </p>
                 </div>
-                <div className="form-group">
-                    <label className="form-label">
-                        <b>Select an Outlet &nbsp;</b>
-                    </label>
-                    <select className="form-control" defaultValue={'DEFAULT'} onChange={(e) => {
-                        setoutlet(e.target.value);
-                        console.log(outlet)
-                        handleOutlet();
-                    }}>
-                        <option value='DEFAULT' disabled> Choose an outlet</option>
-                        <option value='Colombo'>Colombo</option>
-                        <option value='Gampaha' >Gampaha</option>
-                        <option value='Galle'>Galle</option>
-                        <option value='Kalutara'>Kalutara</option>
-                    </select>
+                <div className="form-container">
+                        <label className="form-label">
+                            <b>Select an Outlet</b>
+                        </label>
+                        <select className="form-select" defaultValue={'DEFAULT'} onChange={(e) => {
+                            setoutlet(e.target.value);
+                            console.log(outlet)
+                            handleOutlet();
+                        }}>
+                            <option value='DEFAULT' disabled> Choose an outlet</option>
+                            <option value='Colombo'>Colombo</option>
+                            <option value='Gampaha' >Gampaha</option>
+                            <option value='Galle'>Galle</option>
+                            <option value='Kalutara'>Kalutara</option>
+                        </select>
                 </div>
-                <div className="row xs-1 md-2 g-4">
+
+                <div className="product-display row xs-1 md-2 g-4">
                     {products.map((item, index) => {
                         return (
                             <ProductDisplay product={item} key={index} />
                         )
-
                     })}
 
                 </div>
@@ -77,8 +79,8 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                             Join with us to get the Best Deals..!
                         </p>
                         <Link to='/login' className="footer-links">
-                            {!user && 
-                            <button className="btn">Log In </button>
+                            {!user &&
+                                <button className="btn">Log In </button>
                             }
                         </Link>
                     </section>
@@ -93,6 +95,9 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
 
             </div>
+
+        </div>
+           
         </>
     );
 }

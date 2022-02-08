@@ -10,7 +10,7 @@ interface ProfileProps {
 
 }
 type address = {
-    Address : string
+    Address: string
 }
 
 
@@ -70,18 +70,18 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                                 <h6 className="text-muted">{NIC}</h6>
                             </div>
                         </div>
-                            {addresses.map((address, index) => {
-                                return (
-                                    <div className="row">
-                                        <div className="col-sm-4 text-center">
-                                            <h6>Address {index+1}</h6>
-                                        </div>
-                                        <div className="col-sm-8 ">
-                                            <h6 className="text-muted">{address.Address}</h6>
-                                        </div>
+                        {addresses.map((address, index) => {
+                            return (
+                                <div className="row">
+                                    <div className="col-sm-4 text-center">
+                                        <h6>Address {index + 1}</h6>
                                     </div>
-                                );
-                            })}
+                                    <div className="col-sm-8 ">
+                                        <h6 className="text-muted">{address.Address}</h6>
+                                    </div>
+                                </div>
+                            );
+                        })}
 
 
 
@@ -96,14 +96,17 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
 
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-sm-8"></div>
-                        <div className="col-sm-4 ">
-                            <Link to='/profile/transaction-history' className=''>
-                                <button className="btn">View Transaction Histroy</button>
-                            </Link>
+                    {user.role == 'basic' &&
+                        <div className="row">
+                            <div className="col-sm-8"></div>
+                            <div className="col-sm-4 ">
+                                <Link to='/profile/transaction-history' className=''>
+                                    <button className="btn">View Transaction Histroy</button>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
+                    }
+
                 </div>
             </div>
 
