@@ -99,7 +99,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                     <div className="row">
                         <div className="col-sm-8"></div>
                         <div className="col-sm-4 ">
-                            <Link to='/profile/transaction-hostory' className=''>
+                            <Link to='/profile/transaction-history' className=''>
                                 <button className="btn">View Transaction Histroy</button>
                             </Link>
                         </div>

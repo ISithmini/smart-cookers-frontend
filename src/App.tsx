@@ -11,6 +11,7 @@ import Profile from "./Components/ProfileComponent/Profile";
 import { ProductContext, ProductContextProvider } from "./Context/ProductContext";
 import { useContext } from "react";
 import AuthContextProvider from "./Context/AuthContext";
+import UserTransactions from "./Components/TransactionComponent/UserTransactions";
 
 export interface IAppProps { }
 
@@ -34,6 +35,7 @@ const App: React.FunctionComponent<IAppProps> = () => {
             <Route path="/inventory/view-products" element={< ViewProducts />} />
             <Route path="/profile" element={< Profile />} />
             <Route path='/view-products/id=:id' element={<OneProductDisplay/>} />
+            <Route path='/profile/transaction-history' element={<UserTransactions/>} />
           </Routes>
       </BrowserRouter>
       </AuthContextProvider>

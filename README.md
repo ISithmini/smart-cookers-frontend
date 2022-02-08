@@ -33,10 +33,10 @@ In the project directory, you can run:
 | Inventory-Detailed View of PRoducts | Completed  |
 | Customer-View Products based on outlet | Completed   |
 | Customer-detailed view of a product |  Completed   |
-| Customer-Place Order |  In progress  |
+| Customer-Place Order |  Completed  |
 | Customer-View Profile |Completed |
 | Customer-Edit Profile |  In progress   |
-| Customer-View Transaction History |  In progress   |
+| Customer-View Transaction History |  Completed   |
 
 
 
