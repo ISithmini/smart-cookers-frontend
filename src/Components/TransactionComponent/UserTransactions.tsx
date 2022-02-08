@@ -46,7 +46,7 @@ const UserTransactions: React.FunctionComponent<UserTransactionsProps> = () => {
                     <tbody>
                         {transactions.map((item, index) => {
                             return (
-                                <tr >
+                                <tr key={index}  >
                                     <td>{transactions[index].id}</td>
                                     <td>{transactions[index].Product_name}</td>
                                     <td>{transactions[index].Price}</td>

@@ -37,6 +37,7 @@ In the project directory, you can run:
 | Customer-View Profile |Completed |
 | Customer-Edit Profile |  In progress   |
 | Customer-View Transaction History |  Completed   |
+| Sales-View Orders |   In progress   |
 
 
 

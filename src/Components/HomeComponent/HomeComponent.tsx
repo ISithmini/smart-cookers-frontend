@@ -1,9 +1,10 @@
 import './HomeComponent.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ProductDisplay from '../../Containers/HomeContainer/ProductDisplay';
 import { Link } from 'react-router-dom';
 import { getProductsInOutlet } from '../../Services/Api/ProductService/ProductApi';
 import { getProducts } from '../../Services/Api/ProductService/ProductApi'
+import { AuthContext } from '../../Context/AuthContext';
 
 
 interface HomeComponentProps { }
@@ -14,6 +15,8 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
     const [click, setClick] = useState(false);
     const [outlet, setoutlet] = useState("");
     const [products, setproducts] = useState([]);
+
+    const {user, dispatch} = useContext(AuthContext);
 
 
     const handleOutlet = () => {
@@ -74,7 +77,9 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                             Join with us to get the Best Deals..!
                         </p>
                         <Link to='/login' className="footer-links">
+                            {!user && 
                             <button className="btn">Log In </button>
+                            }
                         </Link>
                     </section>
                     <div className='footer-qoute'>
