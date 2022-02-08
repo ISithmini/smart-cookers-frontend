@@ -1,0 +1,11 @@
+.sales-container{
+    margin-top: 100px !important;
+}
+
+.form-container{
+    display: flex;
+}
+
+.form-select{
+    width: 300px;
+}
