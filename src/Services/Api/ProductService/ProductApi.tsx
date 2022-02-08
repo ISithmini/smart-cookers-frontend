@@ -26,6 +26,16 @@ export const getOneProduct = (id: string) => {
     return axios.get(mockapi + '/products/' + id)
 }
 
+export const getOneProductOutlet = (id: string) => {
+    return axios.get(`http://localhost:8000/product/${id}`)
+}
+
+export const addOrder = (data: object) => {
+    return axios.post('http://localhost:8000/order/add', data);
+}
+
+
+
 
 export const addProduct = (data: object) => {
     return axios.post(mockapi + '/products/', data);

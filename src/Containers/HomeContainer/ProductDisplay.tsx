@@ -33,7 +33,7 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
                         </div><br />
                         <Link to={`/view-products/id=${props.product.id}`}>
                             <button className="buy-btn" onClick={() => {
-                                <OneProductDisplay />
+                                <OneProductDisplay/>
                             }}>
                                 Buy Now
 

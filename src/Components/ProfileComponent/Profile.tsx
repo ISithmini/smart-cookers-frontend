@@ -9,17 +9,8 @@ import { AuthContext } from '../../Context/AuthContext';
 interface ProfileProps {
 
 }
-type userToken = {
-    id: number,
-    role: string
-}
-
-type user = {
-    Name: string,
-    Email: string,
-    NIC: Number,
-    Role: Number,
-
+type address = {
+    Address : string
 }
 
 
