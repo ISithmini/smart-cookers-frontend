@@ -30,8 +30,9 @@ const UserTransactions: React.FunctionComponent<UserTransactionsProps> = () => {
 
 
     return (
-        <div className="profile">
+        <div className="transaction">
         <div className="text-center"> <h5>Transaction History</h5></div>
+        <hr/>
             <div className="products-container">
                 <table className="table table-striped mt-5">
                     <thead className="table-dark">

@@ -10,9 +10,6 @@ export const getProductsInOutlet = ( outletName : string) => {
     return axios.get(`http://localhost:8000/product/outlet/${outletName}`);
 }
 
-export const getOrders = ( outletName : string) => {
-    return axios.get(`http://localhost:8000/product/order/${outletName}`);
-}
 
 
 

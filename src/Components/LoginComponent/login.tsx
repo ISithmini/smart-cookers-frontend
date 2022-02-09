@@ -31,30 +31,12 @@ const Login: React.FunctionComponent<LoginProps> = () => {
                 if (res.data.message) {
                 setloginStatus(res.data.message)
                 } else {
-                    console.log(res.data.token)
-                    // const cookie = Cookie.get('regdata');
-                    // console.log(cookie)
-                    // let token = jwt_decode<userToken>(cookie || '') || null;
-                    // console.log(token)
-
                     dispatch({type:"GET_USER"})
                     navigate('/');
                 }
 
             })
     }
-    // useEffect(() => {
-    //     getUser()
-    //     .then((res) =>{
-    //         console.log(res);
-    //         if(res.data.loggedin == true){
-    //             navigate('/');
-    //         }   
-    // })
-          
-      
-    // }, []);
-    
     
     return (
         <>

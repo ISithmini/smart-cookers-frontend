@@ -2,10 +2,12 @@
     margin-top: 100px !important;
 }
 
-.form-container{
-    display: flex;
-}
 
 .form-select{
     width: 300px;
+}
+
+.products-container{
+    padding : o;
+
 }

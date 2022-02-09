@@ -1,5 +1,10 @@
-
-.products-container{
-    padding : o;
+.transaction{
+    margin-top: 100px;
+}
+.sales-container{
+    margin-top: 0 !important;
+    padding-left : 70px;
+    padding-right : 70px;
+    padding-top : 0
 
 }
