@@ -23,8 +23,6 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
     const handleOutlet = () => {
         getProductsInOutlet(outlet).then((res) => {
             setproducts(res.data)
-            console.log(res.data);
-
         })
     }
 
@@ -54,7 +52,6 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                         </label>
                         <select className="form-select" defaultValue={'DEFAULT'} onChange={(e) => {
                             setoutlet(e.target.value);
-                            console.log(outlet)
                             handleOutlet();
                         }}>
                             <option value='DEFAULT' disabled> Choose an outlet</option>

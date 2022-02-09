@@ -54,9 +54,6 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
 
     const goBack = () => {
         navigate(-1);
-        console.log("asdsfdfgsgergrerageafg");
-        
-
     }
 
     const handleChange = (e: any) => {

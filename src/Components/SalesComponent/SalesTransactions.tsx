@@ -27,7 +27,6 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
     const getOrdersDetails = () => {
         getOrders(outlet).then((res) => {
             setclick(true)
-            console.log(res.data);
             setdata(res.data)
         })
 
@@ -39,12 +38,11 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
         if(complete==true){
             changeOrderStatus(productID);
             status = 'Completed'
-            console.log(status,complete)
         }
         if(complete==false){
             changeOrderStatus(productID);
             status = 'Not Completed'
-            console.log(status,complete)
+
         }
 
     });
@@ -98,7 +96,6 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
                                         setcomplete(true)
                                         setproductID(data[index].id)
                                         status = 'Completed';
-                                        console.log("asdsf")
 
                                     }  }>Complete Order</button></td>
                                 </tr>

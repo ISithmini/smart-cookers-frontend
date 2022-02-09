@@ -30,7 +30,6 @@ const NavBar = () => {
 
     const handleLogin = async () => {
         await logOut().then((res) => {
-            //console.log(res);
             dispatch({ type: "REMOVE_USER", user: "" });
         });
     };

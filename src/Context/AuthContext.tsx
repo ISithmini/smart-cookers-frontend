@@ -3,7 +3,6 @@ import React, {  createContext, useContext, useReducer, useState, Dispatch } fro
 //import jwt_decode from 'jwt-decode';
 import jwt_decode, { InvalidTokenError, JwtPayload } from 'jwt-decode'
 import Cookie from 'js-cookie';
-import {AuthReducer} from './AuthReducer';
 
 type userToken = {
   id: number,
@@ -58,7 +57,6 @@ const AuthContextProvider = ({children,}:AuthContextProviderProps) => {
       case 'GET_USER':
         const cookie = Cookie.get('regdata');
         let token = jwt_decode<userToken>(cookie || '') || null;
-        console.log(token)
         return {
           id: token.id,
           role: token.role,

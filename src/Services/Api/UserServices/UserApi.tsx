@@ -18,7 +18,6 @@ export const getUser = () => {
 }
 
 export const getUserDetails = (id : number) => {
-    console.log(id);
     axios.defaults.withCredentials = true;
     return axios.get(`http://localhost:8000/user/details/${id}`);
 }

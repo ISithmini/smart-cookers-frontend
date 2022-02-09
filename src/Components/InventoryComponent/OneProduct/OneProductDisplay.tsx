@@ -14,7 +14,7 @@ type prod = {
     Pname: string,
     Pdescription: string,
     Price: Number,
-    qtyAvailable: Number,
+    QtyAvailable: Number,
     id: string,
     image: string,
     outletName : string
@@ -138,7 +138,6 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                                     onChange={(e) => {
                                         setquantity((e.target.value));
                                         setqunatitiyClick(true)
-                                        console.log(price)
                                     }}
                                 />
                             </form>
