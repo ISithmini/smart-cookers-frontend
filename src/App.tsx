@@ -11,6 +11,7 @@ import Profile from "./Components/ProfileComponent/Profile";
 import AuthContextProvider from "./Context/AuthContext";
 import UserTransactions from "./Components/SalesComponent/UserTransactions";
 import SalesTransactions from "./Components/SalesComponent/SalesTransactions";
+import RouteLock from "./Helpers/RouteLock";
 
 export interface IAppProps { }
 
@@ -27,8 +28,8 @@ const App: React.FunctionComponent<IAppProps> = () => {
           <NavBar />
           <Routes >
             <Route path="/"  element={<Home />} />
-            <Route path="/about-us" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            {/* <RouteLock path='/inventory' element={<Inevntory/>} redirect='/login' /> */}
             <Route path="/inventory" element={<Inevntory />} />
             <Route path="/inventory/new-product" element={<RegisterNewProduct />} />
             <Route path="/inventory/view-products" element={< ViewProducts />} />

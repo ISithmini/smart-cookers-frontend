@@ -14,7 +14,7 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
 
     const [click, setClick] = useState(false);
-    const [outlet, setoutlet] = useState("");
+    const [outlet, setoutlet] = useState("Colombo");
     const [products, setproducts] = useState([]);
 
     const { user, dispatch } = useContext(AuthContext);
@@ -58,8 +58,8 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                             handleOutlet();
                         }}>
                             <option value='DEFAULT' disabled> Choose an outlet</option>
-                            <option value='Colombo'>Colombo</option>
-                            <option value='Gampaha' >Gampaha</option>
+                            <option value='Gampaha'>Colombo</option>
+                            <option value='Kalutara' >Gampaha</option>
                             <option value='Galle'>Galle</option>
                             <option value='Kalutara'>Kalutara</option>
                         </select>
