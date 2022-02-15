@@ -10,7 +10,7 @@ interface ProfileProps {
 
 }
 type address = {
-    Address: string
+    address_name: string
 }
 
 
@@ -28,7 +28,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
 
     useEffect(() => {
         getUserDetails(id).then((res) => {
-            console.log(res.data)
+            //console.log(res.data)
             setaddresses(res.data.addresses)
             setfirstname(res.data.firstName);
             setlastname(res.data.lastName)
@@ -82,7 +82,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                         </div>
                         {addresses.map((address, index) => {
                             return (
-                                <div className="row">
+                                <div className="row" key={index}>
                                     <div className="col-sm-4 text-center">
                                         <h6>Address {index + 1}</h6>
                                     </div>
