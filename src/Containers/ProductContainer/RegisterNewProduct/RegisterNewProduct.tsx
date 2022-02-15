@@ -20,10 +20,10 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
     const [img, setImg] = useState(fileState)
-    const [productImg, setproductImg] = useState("../../../Assets/images/no-image");
-    const [activeStatus, setActiveStatus] = useState("");
     const [completed, setcompleted] = useState(false);
     const [show, setShow] = useState(false);
+    
+    const [progress, setProgress] = useState(0);
 
 
     const navigate = useNavigate();
@@ -31,28 +31,43 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
 
 
 
-    const handleSubmit = async (e: React.ChangeEvent<any>, status: string) => {
-        await handleUpload();
+    const handleSubmit =   (e: React.ChangeEvent<any>, status: string) => {
         e.preventDefault();
-        setActiveStatus(status);
+        const uploadTask = storage.ref(`images/${img.name}`).put(img);
+   
+           uploadTask.on(
+               "state_changed",
+               snapshot => {
+                   const progress = Math.round(
+                       (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                   );
+                   setProgress(progress);
+               },
+               error => {
+                   console.log(error);
+               },
+                () => {
+                   storage
+                       .ref("images")
+                       .child(img.name)
+                       .getDownloadURL()
+                       .then(productImg => {
+                           console.log(productImg)
+                           var data = {
+                            "id" : Id,
+                            "Pname": name,
+                            "Pdescription": description,
+                            "Price": price,
+                            "qtyAvailable": quantity,
+                            "image": productImg
+                        }
 
-        var data = {
-            "id" : Id,
-            "Pname": name,
-            "Pdescription": description,
-            "Price": price,
-            "qtyAvailable": quantity,
-            "image": productImg
-        }
-
-       addProduct(data);
-    
-    goBack();
-
-    }
-
-    const goBack = () => {
-        navigate(-1);
+                        addProduct(data);
+                        navigate(-1);
+   
+                       });
+               }
+           );
     }
 
     const handleChange = (e: any) => {
@@ -63,34 +78,7 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
         }
     };
 
-    const [progress, setProgress] = useState(0);
 
-    const handleUpload = async () => {
-        const uploadTask = storage.ref(`images/${img.name}`).put(img);
-
-        uploadTask.on(
-            "state_changed",
-            snapshot => {
-                const progress = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-                setProgress(progress);
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-                storage
-                    .ref("images")
-                    .child(img.name)
-                    .getDownloadURL()
-                    .then(productImg => {
-                        setproductImg(productImg);
-
-                    });
-            }
-        );
-    };
 
     return (
         <>
