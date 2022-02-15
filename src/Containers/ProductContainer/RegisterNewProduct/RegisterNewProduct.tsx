@@ -15,6 +15,7 @@ var fileState = new File([''], '', {
 
 const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () => {
     const [name, setName] = useState("");
+    const [Id, setId] = useState("")
     const [description, setDescription] = useState("");
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
@@ -36,21 +37,15 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
         setActiveStatus(status);
 
         var data = {
+            "id" : Id,
             "Pname": name,
             "Pdescription": description,
             "Price": price,
             "qtyAvailable": quantity,
             "image": productImg
-
         }
 
-       await addProduct(data);
-    //    .then( () => {
-    //        if(productImg!="../../../Assets/images/no-image"){
-    //         navigate(-1);
-    //        }
-    //    });
-
+       addProduct(data);
     
     goBack();
 
@@ -97,32 +92,6 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
         );
     };
 
-
-    //     /////Image Display
-    //   const imageUpload = (image) => {
-    //     //console.log(image);
-    //     if (image !== undefined) {
-    //       setImg(image);
-    //       imageHandler(image);
-    //     }
-    //   };
-    //   const [jobImg, setjobImage] = useState(
-    //     "/assets/images/no-image-placeholder.jpg"
-    //   );
-    //   const imageHandler = (image) => {
-    //     const reader = new FileReader();
-    //     reader.onload = () => {
-    //       if (reader.readyState === 2) {
-    //         setproductImg(reader.result);
-    //       }
-    //     };
-    //     reader.readAsDataURL(image);
-    //   };
-
-
-
-
-
     return (
         <>
             <div className="new-product">
@@ -130,6 +99,24 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                     <div className="product-form">
                         <h3 className="text-white mb-4">Register a new product</h3>
                         <form>
+                        <div className="form-group row">
+                                <label className="col-sm-2 col-form-label">
+                                    <b>Product Id</b>{" "}
+                                </label>
+                                <div className="col-sm-10 col-md-4">
+                                    <input
+                                        type="text"
+                                        required={true}
+                                        className="form-control"
+                                        id="inputProductID"
+                                        placeholder="Add the product id here"
+                                        name="Product-id"
+                                        onChange={(e) => {
+                                            setId(e.target.value);
+                                        }}
+                                    />
+                                </div>
+                            </div>
                             <div className="form-group row">
                                 <label className="col-sm-2 col-form-label">
                                     <b>Product Name</b>{" "}

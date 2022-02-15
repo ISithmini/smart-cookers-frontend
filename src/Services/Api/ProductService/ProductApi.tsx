@@ -24,5 +24,6 @@ export const addOrder = (data: object) => {
 
 
 export const addProduct = (data: object) => {
-    return axios.post(mockapi + '/products/', data);
+    axios.defaults.withCredentials = true;
+    return axios.post(`http://localhost:8000/product/register`, data);
 }
