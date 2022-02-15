@@ -7,9 +7,9 @@ export const getTransactionHistory = (id : number) => {
 
 
 
-export const changeOrderStatus = (id : number) => {
-    axios.defaults.withCredentials = true;
-    return axios.get(`http://localhost:8000/order/status/${id}`);
+export const changeOrderStatus = (id) => {
+    console.log(id)
+    return axios.patch("http://localhost:8000/order/status", id);
 }
 
 export const getOrders = ( outletName : string) => {

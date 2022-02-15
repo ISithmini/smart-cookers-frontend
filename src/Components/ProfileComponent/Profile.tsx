@@ -17,7 +17,8 @@ type address = {
 const Profile: React.FunctionComponent<ProfileProps> = () => {
 
     const { user, dispatch } = useContext(AuthContext);
-    const [name, setname] = useState("");
+    const [firstname, setfirstname] = useState("");
+    const [lastname, setlastname] = useState('')
     const [email, setemail] = useState("");
     const [NIC, setNIC] = useState("");
     const [role, setrole] = useState("");
@@ -27,11 +28,12 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
 
     useEffect(() => {
         getUserDetails(id).then((res) => {
-            console.log(res.data[0]);
-            setaddresses(res.data[0])
-            setname(res.data[1].Name);
-            setemail(res.data[1].Email);
-            setNIC(res.data[1].NIC);
+            console.log(res.data)
+            setaddresses(res.data.addresses)
+            setfirstname(res.data.firstName);
+            setlastname(res.data.lastName)
+            setemail(res.data.email);
+            setNIC(res.data.NIC);
         })
     }, []);
 
@@ -48,10 +50,18 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                     <div className="profile-container">
                         <div className="row ">
                             <div className="col-sm-4 text-center">
-                                <h6>Full Name</h6>
+                                <h6>First Name</h6>
                             </div>
                             <div className="col-sm-8">
-                                <h6 className="text-muted">{name}</h6>
+                                <h6 className="text-muted">{firstname}</h6>
+                            </div>
+                        </div>
+                        <div className="row ">
+                            <div className="col-sm-4 text-center">
+                                <h6>Last Name</h6>
+                            </div>
+                            <div className="col-sm-8">
+                                <h6 className="text-muted">{lastname}</h6>
                             </div>
                         </div>
                         <div className="row">
@@ -77,7 +87,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                                         <h6>Address {index + 1}</h6>
                                     </div>
                                     <div className="col-sm-8 ">
-                                        <h6 className="text-muted">{address.Address}</h6>
+                                        <h6 className="text-muted">{address.address_name}</h6>
                                     </div>
                                 </div>
                             );

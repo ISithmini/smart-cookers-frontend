@@ -36,11 +36,11 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
 
     useEffect(() => {
         if(complete==true){
+            console.log(productID)
             changeOrderStatus(productID);
             status = 'Completed'
         }
         if(complete==false){
-            changeOrderStatus(productID);
             status = 'Not Completed'
 
         }

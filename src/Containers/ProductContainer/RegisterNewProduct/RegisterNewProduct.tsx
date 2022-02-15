@@ -3,6 +3,8 @@ import { addProduct } from '../../../Services/Api/ProductService/ProductApi';
 import './RegisterNewProduct.css'
 import { storage } from '../../../Services/Firebase/firebase'
 import { Link, useNavigate } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 
 interface RegisterNewProductProps { }
@@ -19,7 +21,9 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
     const [img, setImg] = useState(fileState)
     const [productImg, setproductImg] = useState("../../../Assets/images/no-image");
     const [activeStatus, setActiveStatus] = useState("");
-    const [completed, setcompleted] = useState(true);
+    const [completed, setcompleted] = useState(false);
+    const [show, setShow] = useState(false);
+
 
     const navigate = useNavigate();
 
@@ -238,6 +242,8 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                             <div className="col-md-6 p-2"
                                 onClick={(e: React.ChangeEvent<any>) => {
                                     handleSubmit(e, "post");
+                                    setcompleted(true)
+                                    navigate('/inventory/view-products')
                                 }}>
                                 <button className="edit btn-success ">Save Product</button>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -245,43 +251,27 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                                 <button className="edit btn-secondary" onClick={() => navigate(-1)} >Cancel</button>
 
                             </div>
-
-                            {/* {completed && (
-                                <div>
-                                <p className="content lead successfull text-center justify-content-center">
-                                  Product has been saved successfully.
-                                </p>
-                                <div className="row successfull  justify-content-center">
-                                  <button
-                                    type="button"
-                                    className="btn btn-light pr-5 pl-5  justify-content-center text-align-center"
-                                    onClick={(e) => {
-                                        navigate(-1);
-                                      setcompleted(false);
-                                    }}
-                                  >
-                                    Close
-                                  </button>
-                                  &nbsp;&nbsp;
-                                  <Link
-                                    className="allads pr-2 pl-2   justify-content-center text-align-center"
-                                    to="/inventory"
-                                  >
-                                    <button
-                                      type="button"
-                                      className=" btn-success  justify-content-center text-align-center"
-                                    >
-                                      Go to All Procuts Page
-                                    </button>
-                                  </Link>
-                                </div>
-                                <br />
-                              </div>
-                            ) } */}
                         </form>
 
                     </div>
                 </div>
+                {completed && 
+                <Modal
+                animation={false}
+                show={show} 
+                // onHide={handleClose}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                <Modal.Body> <div className="text-center"> <h5>Product has recorded successfully.........</h5></div></Modal.Body>
+                <Modal.Footer>
+                  <Button  variant="secondary" onClick={ ()=> navigate('/')}>Home Page</Button>
+                  <Button variant="secondary" onClick={ ()=> navigate('/inventory/view-products')}>View All Products</Button>
+                </Modal.Footer>
+              </Modal>
+                
+                }
             </div>
 
 

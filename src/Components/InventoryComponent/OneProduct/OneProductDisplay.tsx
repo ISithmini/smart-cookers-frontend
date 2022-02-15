@@ -155,7 +155,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                     </div>
 
                 }
-                {userRole && <div className="row">
+                <div className="row">
                     <div className="col-sm-7"></div>
                     <div className="col-sm-2">
                         {qunatitiyClick && 
@@ -174,7 +174,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                     }
                        
                     </div>
-                </div>}
+                </div>
             </div>
 
             {orderCompleted && 
@@ -189,7 +189,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                 <Modal.Body> <div className="text-center"> <h5>Your Order has been recorded successfully.........</h5></div></Modal.Body>
                 <Modal.Footer>
                   <Button  variant="secondary" onClick={ ()=> navigate('/')}>Home Page</Button>
-                  <Button variant="secondary" onClick={ ()=> navigate('/profile/transaction-hostory')}>View Transaction History</Button>
+                  <Button variant="secondary" onClick={ ()=> navigate('/profile/transaction-history')}>View Transaction History</Button>
                 </Modal.Footer>
               </Modal>
                 
