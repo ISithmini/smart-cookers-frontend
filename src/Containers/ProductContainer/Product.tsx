@@ -9,16 +9,15 @@ interface ProductProps {
 
 type productporps = {
     product: {
-        Pname: string,
-        Pdescription: string,
-        Price: number,
+        product_name: string,
+        description: string,
+        price: number,
         qtyAvailable: number,
-        id: string,
-        img:string
+        product_id: number,
+        image: string
+
     }
-
 };
-
 
 const Product: React.FunctionComponent<productporps> = (props) => {
 
@@ -34,13 +33,13 @@ const Product: React.FunctionComponent<productporps> = (props) => {
     return (
 
         <tr >
-            <td>{props.product.Pname}</td>
-            <td>{props.product.Pdescription}</td>
-            <td>{props.product.Price}</td>
+            <td>{props.product.product_name}</td>
+            <td>{props.product.description}</td>
+            <td>{props.product.price}</td>
             <td>{props.product.qtyAvailable}</td>
             <td>
 
-                <Link to={`/view-products/id=${props.product.id}`}>
+                <Link to={`/view-products/id=${props.product.product_id}`}>
                     
                 {/* <button className="btn-dark" onClick={handleClick}>
                     View Product
