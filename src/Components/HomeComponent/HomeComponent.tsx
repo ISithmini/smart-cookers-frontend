@@ -28,7 +28,8 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
     useEffect(() => {
         getProducts().then((res: any) => {
-            setproducts(res.data);
+            setproducts(res.data.data);
+            console.log(res.data.data)
 
         })
             .catch(err => {

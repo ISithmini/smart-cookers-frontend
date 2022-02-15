@@ -12,9 +12,9 @@ interface ProductCardProps {
 
 type productporps = {
     product: {
-        Pname: string,
+        product_name: string,
         Pdescription: string,
-        Price: number,
+        price: number,
         qtyAvailable: number,
         id: string
         image: string
@@ -33,10 +33,10 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
             <Card style={{ width: '16rem' }} className="card">
                 <Card.Img variant="top" src={props.product.image} className="img"/>
                 <Card.Body className= "card-body">
-                    <Card.Title> {props.product.Pname}</Card.Title>
+                    <Card.Title> {props.product.product_name}</Card.Title>
                     <Card.Text>
                         <div className='text-danger'>
-                            Rs. {props.product.Price}
+                            Rs. {props.product.price}
                         </div><br />
 
                         {user && 
