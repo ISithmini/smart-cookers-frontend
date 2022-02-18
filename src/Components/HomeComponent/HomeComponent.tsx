@@ -34,6 +34,7 @@ const HomeComponent: React.FunctionComponent<outlet> = () => {
         //console.log(selectedOutlet);
         getProductsInOutlet(selectedOutlet).then((res) => {
             setoutletproducts(res.data.data)
+            console.log(res.data.data)
             setclick(true);
         })
     }

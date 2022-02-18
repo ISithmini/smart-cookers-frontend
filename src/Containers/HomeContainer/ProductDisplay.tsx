@@ -29,7 +29,7 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    console.log(props.product_name)
+    //console.log(props.product_name)
 
 
     return (
