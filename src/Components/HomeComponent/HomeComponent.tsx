@@ -21,8 +21,9 @@ const HomeComponent: React.FunctionComponent<outlet> = () => {
     //const [click, setClick] = useState(false);
     const [outletlocation, setoutletlocation] = useState("");
     const [products, setproducts] = useState([]);
+    const [outletproducts, setoutletproducts] = useState([]);
     const [outletsList, setoutletsList] = useState<outlet>([]);
-    const [click, setclick] = useState(true);
+    const [click, setclick] = useState(false);
 
     const { user, dispatch } = useContext(AuthContext);
 
@@ -32,8 +33,8 @@ const HomeComponent: React.FunctionComponent<outlet> = () => {
     const handleOutlet = (selectedOutlet: string) => {
         //console.log(selectedOutlet);
         getProductsInOutlet(selectedOutlet).then((res) => {
-//console.log(res.data.data)
-            setproducts(res.data)
+            setoutletproducts(res.data.data)
+            setclick(true);
         })
     }
 
@@ -76,7 +77,12 @@ const HomeComponent: React.FunctionComponent<outlet> = () => {
                         </select>
                     </div>
                     <div className="product-display row xs-1 md-2 g-4">
-                        {products.map((item, index) => {
+                        {!click && products.map((item, index) => {
+                            return (
+                                <ProductDisplay product_id={item} key={index} />
+                            )
+                        })}
+                        {click && outletproducts.map((item, index) => {
                             return (
                                 <ProductDisplay product_id={item} key={index} />
                             )

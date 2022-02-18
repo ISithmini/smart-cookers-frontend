@@ -21,8 +21,6 @@ type productporps = {
         qtyAvailable: number,
         id: string,
         image: string,
-
-
     }
 };
 
@@ -31,7 +29,7 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    console.log(props.product_id)
+    console.log(props.product_name)
 
 
     return (
