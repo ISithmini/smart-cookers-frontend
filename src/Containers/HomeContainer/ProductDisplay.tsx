@@ -5,60 +5,66 @@ import './ProductDisplay.css';
 import OneProductDisplay from '../../Components/InventoryComponent/OneProduct/OneProductDisplay';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
+import Modal from 'react-bootstrap/Modal';
+
+
 
 interface ProductCardProps {
 
 }
 
 type productporps = {
-    product: {
+    product_id: {
         product_name: string,
         Pdescription: string,
         price: number,
         qtyAvailable: number,
-        id: string
-        image: string
+        id: string,
+        image: string,
+
 
     }
 };
 
 const ProductCard: React.FunctionComponent<productporps> = (props) => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    console.log(props.product_id)
 
 
     return (
         <div className="product-card col-md-3">
             <Card style={{ width: '16rem' }} className="card">
-                <Card.Img variant="top" src={props.product.image} className="img"/>
-                <Card.Body className= "card-body">
-                    <Card.Title> {props.product.product_name}</Card.Title>
+                <Card.Img variant="top" src={props.product_id.image} className="img" />
+                <Card.Body className="card-body">
+                    <Card.Title> {props.product_id.product_name}</Card.Title>
                     <Card.Text>
                         <div className='text-danger'>
-                            Rs. {props.product.price}
+                            Rs. {props.product_id.price}
                         </div><br />
 
                         {user && 
-                        <Link to={`/view-products/id=${props.product.id}`}>
-                        <button className="buy-button" onClick={() => {
-                            <OneProductDisplay/>
-                        }}>
-                            Buy Now
-                        </button>
-                    </Link>
-                        
-                        }
-                        {!user && 
+                            <Link to={`/view-products/id=${props.product_id.id}`}>
+                                <button className="buy-button" onClick={() => {
+                                    <OneProductDisplay />
+                                }}>
+                                    Buy Now
+                                </button>
+                            </Link>
 
-                        <button className="buy-button" onClick={() => navigate('/login') }>
-                            Buy Now
-                        </button>
-                        
                         }
-                        
+                        {!user &&
+
+                            <button className="buy-button" onClick={() => navigate('/login')}>
+                                Buy Now
+                            </button>
+
+                        }
+
                     </Card.Text>
-                    
+
                 </Card.Body>
             </Card>
 

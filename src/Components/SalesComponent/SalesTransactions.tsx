@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { getAllOutlets } from '../../Services/Api/ProductService/ProductApi';
 import { changeOrderStatus, getOrders } from '../../Services/Api/UserServices/OrderApi';
 import './SalesTransaction.css';
 
 interface SalesTransactionsProps { }
 
-const options = [
-    { value: 'Colombo', label: 'Colombo' },
-    { value: 'Gampaha', label: 'Gampaha' },
-    { value: 'Galle', label: 'Galle' },
-    { value: 'Kalutara', label: 'Kalutara' }
-];
+type outlet = {
+    location: string,
+    outlet_id: string
+}[]
 
 const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () => {
 
@@ -18,6 +17,7 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
     const [data, setdata] = useState([]);
     const [complete, setcomplete] = useState(false);
     const [productID, setproductID] = useState(0);
+    const [outletsList, setoutletsList] = useState<outlet>([]);
 
     var state = {
         selectedOption: null,
@@ -35,6 +35,10 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
     let status : string;
 
     useEffect(() => {
+        getAllOutlets().then((res) => {
+            setoutletsList(res.data.data);
+        })
+
         if(complete==true){
             console.log(productID)
             changeOrderStatus(productID);
@@ -60,11 +64,10 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
                              getOrdersDetails()
 
                         } }>
-                            <option value='DEFAULT' disabled> Choose an outlet</option>
-                            <option value='Gampaha'>Colombo</option>
-                            <option value='Kalutara' >Gampaha</option>
-                            <option value='Galle'>Galle</option>
-                            <option value='Kalutara'>Kalutara</option>
+                        {outletsList.map(outlet => {
+                                return <option value={outlet.location}> {outlet.location}
+                                </option>
+                            })}
                         </select>
             </div>
             <hr />

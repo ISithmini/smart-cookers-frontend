@@ -2,7 +2,7 @@ import './HomeComponent.css';
 import React, { useState, useEffect, useContext } from 'react';
 import ProductDisplay from '../../Containers/HomeContainer/ProductDisplay';
 import { Link } from 'react-router-dom';
-import { getProductsInOutlet } from '../../Services/Api/ProductService/ProductApi';
+import { getAllOutlets, getProductsInOutlet } from '../../Services/Api/ProductService/ProductApi';
 import { getProducts } from '../../Services/Api/ProductService/ProductApi'
 import { AuthContext } from '../../Context/AuthContext';
 import { CardGroup } from 'react-bootstrap';
@@ -10,33 +10,47 @@ import { CardGroup } from 'react-bootstrap';
 
 interface HomeComponentProps { }
 
-const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
+type outlet = {
+    location: string,
+    outlet_id: string
+}[]
+
+const HomeComponent: React.FunctionComponent<outlet> = () => {
 
 
     //const [click, setClick] = useState(false);
-    const [outlet, setoutlet] = useState("Colombo");
+    const [outletlocation, setoutletlocation] = useState("");
     const [products, setproducts] = useState([]);
+    const [outletsList, setoutletsList] = useState<outlet>([]);
+    const [click, setclick] = useState(true);
 
     const { user, dispatch } = useContext(AuthContext);
 
+    //let sortedList = outletsList.sort(outletsList.location);
 
-    const handleOutlet = () => {
-        getProductsInOutlet(outlet).then((res) => {
+
+    const handleOutlet = (selectedOutlet: string) => {
+        //console.log(selectedOutlet);
+        getProductsInOutlet(selectedOutlet).then((res) => {
+//console.log(res.data.data)
             setproducts(res.data)
         })
     }
 
     useEffect(() => {
+        getAllOutlets().then((res) => {
+            setoutletsList(res.data.data);
+        })
         getProducts().then((res: any) => {
             setproducts(res.data.data);
-            console.log(res.data.data)
+            //console.log(res.data.data)
+
 
         })
             .catch(err => {
                 console.log(err);
             });
     }, []);
-
 
     return (
         <>
@@ -52,27 +66,22 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                         <label className="form-label">
                             <b>Select an Outlet</b>
                         </label>
-                        <select className="form-select" defaultValue={'DEFAULT'} onChange={(e) => {
-                            setoutlet(e.target.value);
-                            handleOutlet();
+                        <select className="form-select" onChange={(e) => {
+                            handleOutlet(e.target.value);
                         }}>
-                            <option value='DEFAULT' disabled> Choose an outlet</option>
-                            <option value='Gampaha'>Colombo</option>
-                            <option value='Kalutara' >Gampaha</option>
-                            <option value='Galle'>Galle</option>
-                            <option value='Kalutara'>Kalutara</option>
+                            {outletsList.map(outlet => {
+                                return <option value={outlet.outlet_id}> {outlet.location}
+                                </option>
+                            })}
                         </select>
                     </div>
-
                     <div className="product-display row xs-1 md-2 g-4">
                         {products.map((item, index) => {
                             return (
-                                <ProductDisplay product={item} key={index} />
+                                <ProductDisplay product_id={item} key={index} />
                             )
                         })}
                     </div>
-
-
                     <div className='footer-container'>
                         <section className='footer-subscription'>
                             <p className='footer-subscription-heading'>
