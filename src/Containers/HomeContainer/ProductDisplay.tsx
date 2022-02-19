@@ -14,14 +14,23 @@ interface ProductCardProps {
 }
 
 type productporps = {
-    product_id: {
-        product_name: string,
+    product_id:{
+        product_id : {
+            product_name: string,
         Pdescription: string,
         price: number,
         qtyAvailable: number,
-        id: string,
+        product_id: string,
         image: string,
+
+        }
+        outlet_id : {
+            outlet_id: string,
+            location : string
+        }
+
     }
+        
 };
 
 const ProductCard: React.FunctionComponent<productporps> = (props) => {
@@ -29,29 +38,28 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    //console.log(props.product_name)
+    //console.log(props.product_id)
 
 
     return (
         <div className="product-card col-md-3">
             <Card style={{ width: '16rem' }} className="card">
-                <Card.Img variant="top" src={props.product_id.image} className="img" />
+                <Card.Img variant="top" src={props.product_id.product_id.image} className="img" />
                 <Card.Body className="card-body">
-                    <Card.Title> {props.product_id.product_name}</Card.Title>
+                    <Card.Title> {props.product_id.product_id.product_name}</Card.Title>
                     <Card.Text>
                         <div className='text-danger'>
-                            Rs. {props.product_id.price}
+                            Rs. {props.product_id.product_id.price}
                         </div><br />
 
                         {user && 
-                            <Link to={`/view-products/id=${props.product_id.id}`}>
+                            <Link to={`/view-products/id=${props.product_id.product_id.product_id}`}>
                                 <button className="buy-button" onClick={() => {
                                     <OneProductDisplay />
                                 }}>
                                     Buy Now
                                 </button>
                             </Link>
-
                         }
                         {!user &&
 

@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 interface OneProductDisplayProps {
 }
 
-type prod = {
+type product = {
     Pname: string,
     Pdescription: string,
     Price: Number,
@@ -46,6 +46,9 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
     const navigate = useNavigate();
 
     let { id } = useParams();
+    let {outlet} = useParams();
+    console.log(id)
+    console.log(outlet);
 
 
     useEffect(() => {
@@ -55,6 +58,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
 
         getOneProductOutlet(id)
             .then((res: any) => {
+                console.log(res.data)
                 setProd(res.data[0]);
 
             })

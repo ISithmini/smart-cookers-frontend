@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 import { getAllOutlets, getProductsInOutlet } from '../../Services/Api/ProductService/ProductApi';
 import { getProducts } from '../../Services/Api/ProductService/ProductApi'
 import { AuthContext } from '../../Context/AuthContext';
-import { CardGroup } from 'react-bootstrap';
+import advertisment1 from '../../Assets/images/advertisment2.jpg';
+import advertisment2 from '../../Assets/images/advertisment.png';
+import advertisment3 from '../../Assets/images/advertisment3.jpg';
+import Carousel from 'react-bootstrap/Carousel'
 
 
 interface HomeComponentProps { }
@@ -78,16 +81,44 @@ const HomeComponent: React.FunctionComponent<outlet> = () => {
                         </select>
                     </div>
                     <div className="product-display row xs-1 md-2 g-4">
-                        {!click && products.map((item, index) => {
-                            return (
-                                <ProductDisplay product_id={item} key={index} />
-                            )
-                        })}
                         {click && outletproducts.map((item, index) => {
-                            return (
-                                <ProductDisplay product_id={item} key={index} />
-                            )
+                            {
+                                return (
+                                    <ProductDisplay product_id={item} key={index} />
+                                )
+                            }
                         })}
+                    </div>
+                    <div className="carasoul row xs-1 md-2 g-4">
+                    <Carousel variant="dark">
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src={advertisment1}
+                                    alt="First slide"
+                                    width={600}
+                                    height={400}
+                                />
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src={advertisment2}
+                                    alt="Second slide"
+                                    width={600}
+                                    height={400}
+                                />
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src={advertisment3}
+                                    alt="third slide"
+                                    width={600}
+                                    height={400}
+                                />
+                            </Carousel.Item>
+                        </Carousel>
                     </div>
                     <div className='footer-container'>
                         <section className='footer-subscription'>
