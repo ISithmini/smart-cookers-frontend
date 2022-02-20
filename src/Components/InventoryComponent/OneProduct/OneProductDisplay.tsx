@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addOrder, getOneProductOutlet } from '../../../Services/Api/ProductService/ProductApi'
+import { getOneProductOutlet } from '../../../Services/Api/ProductService/ProductApi'
+import { addOrder } from "../../../Services/Api/UserServices/OrderApi";
 import '../OneProduct/OneProductDisplay.css';
 import { AuthContext } from "../../../Context/AuthContext";
 import Modal from 'react-bootstrap/Modal';
@@ -37,9 +38,6 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
 
     const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const navigate = useNavigate();
 
 
@@ -51,9 +49,6 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
 
 
     const  {outlet_id, id } = useParams<params>();
-    //let {outlet} = useParams();
-    console.log(id)
-    console.log(outlet_id);
 
     useEffect(() => { 
         if (user.role == 'basic') {
@@ -63,7 +58,7 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
         getOneProductOutlet(id, outlet_id)
             .then((res: any)=> {
                 setProd(res.data.data[0].product_id);
-                setoutlet(res.data.data[0].outlet_id)
+               setoutlet(res.data.data[0].outlet_id.outlet_id)
 
             })
             .catch(err => {
@@ -83,8 +78,7 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
             "outlet_id" : outlet,
             "status" : "Not Completed"
         }
-        addOrder(data);
-        
+        addOrder(data);  
     }
 
 

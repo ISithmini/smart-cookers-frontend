@@ -5,10 +5,12 @@ export const getTransactionHistory = (id : number) => {
     return axios.get(`http://localhost:8000/order/details/${id}`);
 }
 
+export const addOrder = (data: object) => {
+    return axios.post('http://localhost:8000/order/add', data);
+}
 
 
-export const changeOrderStatus = (id) => {
-    console.log(id)
+export const changeOrderStatus = (id:any) => {
     return axios.patch("http://localhost:8000/order/status", id);
 }
 

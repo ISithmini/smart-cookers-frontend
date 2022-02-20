@@ -74,8 +74,8 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
                         <select className="form-select" onChange={(e) => {
                             handleOutlet(e.target.value);
                         }}>
-                            {outletsList.map(outlet => {
-                                return <option value={outlet.outlet_id}> {outlet.location}
+                            {outletsList.map((outlet, index) => {
+                                return <option value={outlet.outlet_id} key={index}> {outlet.location}
                                 </option>
                             })}
                         </select>
