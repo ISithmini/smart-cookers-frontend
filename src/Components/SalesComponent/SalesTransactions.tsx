@@ -57,21 +57,27 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
         })
     }
 
+    const handleOrders = (order_id: string) => {
+        changeOrderStatus(order_id).then((res) => {
+            console.log(res.data);
+        })
+    }
+
 
     useEffect(() => {
         getAllOutlets().then((res) => {
             setoutletsList(res.data.data);
         })
 
-        if (complete == true) {
-            console.log(orderId)
-            changeOrderStatus(orderId);
-            setstatus('Completed')
-        }
-        if (complete == false) {
-            setstatus('Not Completed')
+        // if (complete == true) {
+        //     console.log(orderId)
+        //     changeOrderStatus(orderId);
+        //     setstatus('Completed')
+        // }
+        // if (complete == false) {
+        //     setstatus('Not Completed')
 
-        }
+        // }
     }, []);
 
 
@@ -121,7 +127,8 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
                                     <td>{item.stauts}</td>
                                     {item.stauts=='Not Completed' && 
                                     <td> <button className='proceed-success' onClick={() => {
-                                        setorderId(item.order_id)
+                                        //setorderId(item.order_id)
+                                        handleOrders(item.order_id)
                                         setstatus('Completed')
 
                                     }}>Complete Order</button></td>
