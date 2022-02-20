@@ -78,6 +78,7 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
             "outlet_id" : outlet,
             "status" : "Not Completed"
         }
+        console.log(data);
         addOrder(data);  
     }
 

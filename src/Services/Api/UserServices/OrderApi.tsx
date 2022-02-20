@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getTransactionHistory = (id : number) => {
+export const getTransactionHistory = (user_id : number) => {
     axios.defaults.withCredentials = true;
-    return axios.get(`http://localhost:8000/order/details/${id}`);
+    return axios.get(`http://localhost:8000/order/userOrders/${user_id}`);
 }
 
 export const addOrder = (data: object) => {
