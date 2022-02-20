@@ -13,7 +13,7 @@ interface ProductCardProps {
 
 }
 
-type productporps = {
+type product = {
     product_id:{
         product_id : {
             product_name: string,
@@ -33,12 +33,12 @@ type productporps = {
         
 };
 
-const ProductCard: React.FunctionComponent<productporps> = (props) => {
+
+
+const ProductCard: React.FunctionComponent<product> = (props) => {
 
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-
-    //console.log(props.product_id)
 
 
     return (
@@ -53,7 +53,7 @@ const ProductCard: React.FunctionComponent<productporps> = (props) => {
                         </div><br />
 
                         {user && 
-                            <Link to={`/view-products/id=${props.product_id.product_id.product_id}`}>
+                            <Link to={`/view-products/outlet=${props.product_id.outlet_id.outlet_id}&id=${props.product_id.product_id.product_id}`}>
                                 <button className="buy-button" onClick={() => {
                                     <OneProductDisplay />
                                 }}>

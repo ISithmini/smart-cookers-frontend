@@ -18,9 +18,8 @@ export const getProductsInOutlet = ( outlet_id : string) => {
 
 
 
-export const getOneProductOutlet = (product_id: string) => {
-
-    return axios.get(`http://localhost:8000/outletProducts/${product_id}`)
+export const getOneProductOutlet = (product_id: string, outlet_id: string) => {
+    return axios.get(`http://localhost:8000/outletProducts/${outlet_id}/${product_id}`)
 }
 
 export const addOrder = (data: object) => {

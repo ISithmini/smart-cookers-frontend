@@ -34,7 +34,7 @@ const App: React.FunctionComponent<IAppProps> = () => {
             <Route path="/inventory/new-product" element={<RegisterNewProduct />} />
             <Route path="/inventory/view-products" element={< ViewProducts />} />
             <Route path="/profile" element={< Profile />} />
-            <Route path='/view-products/id=:id' element={<OneProductDisplay/>} />
+            <Route path='/view-products/outlet=:outlet_id&id=:id' element={<OneProductDisplay/>} />
             <Route path='/profile/transaction-history' element={<UserTransactions/>} />
             <Route path='/sales' element={<SalesTransactions/>} />
           </Routes>

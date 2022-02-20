@@ -18,7 +18,7 @@ type outlet = {
     outlet_id: string
 }[]
 
-const HomeComponent: React.FunctionComponent<outlet> = () => {
+const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
 
     //const [click, setClick] = useState(false);

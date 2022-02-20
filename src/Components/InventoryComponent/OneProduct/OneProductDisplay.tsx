@@ -11,20 +11,24 @@ interface OneProductDisplayProps {
 }
 
 type product = {
-    Pname: string,
-    Pdescription: string,
-    Price: Number,
-    QtyAvailable: Number,
-    id: string,
+    product_name: string,
+    description: string,
+    price: number,
+    qtyAvailable: number,
+    product_id: string,
     image: string,
-    outletName : string
-
 }
 
-const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (props) => {
+type params = {
+    outlet_id : string,
+    id :string
+}
+
+const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () => {
 
     const { user, dispatch } = useContext(AuthContext);
-    const [prod, setProd] = useState<prod | null>(null);
+    const [prod, setProd] = useState<product| null>(null);
+    const [outlet,setoutlet] = useState('');
     const [userRole, setuserRole] = useState(false);
     const [click, setclick] = useState(false);
     const [qunatitiyClick, setqunatitiyClick] = useState(false);
@@ -36,30 +40,30 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const navigate = useNavigate();
+
 
     const  qty: number = +quantity;
 
-    const  price : number = Number(prod?.Price)
+    const  price : number = Number(prod?.price)
 
     const totalPrice : number = Number (qty*price)
 
-    const navigate = useNavigate();
 
-    let { id } = useParams();
-    let {outlet} = useParams();
+    const  {outlet_id, id } = useParams<params>();
+    //let {outlet} = useParams();
     console.log(id)
-    console.log(outlet);
+    console.log(outlet_id);
 
-
-    useEffect(() => {
+    useEffect(() => { 
         if (user.role == 'basic') {
             setuserRole(true);
         }
 
-        getOneProductOutlet(id)
-            .then((res: any) => {
-                console.log(res.data)
-                setProd(res.data[0]);
+        getOneProductOutlet(id, outlet_id)
+            .then((res: any)=> {
+                setProd(res.data.data[0].product_id);
+                setoutlet(res.data.data[0].outlet_id)
 
             })
             .catch(err => {
@@ -72,12 +76,12 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
         setorderCompleted(true);
         
         var data = {
-            "Product_id" : prod?.id,
-            "Product_name" : prod?.Pname,
-            "Price" : totalPrice,
-            "User_Id" : user.id,
-            "Outlet_Name" : prod?.outletName,
-            "Status" : "Not Completed"
+            "product_id" : prod?.product_id,
+            'quantity' : quantity,
+            "price" : totalPrice,
+            "user_Id" : user.id,
+            "outlet_id" : outlet,
+            "status" : "Not Completed"
         }
         addOrder(data);
         
@@ -94,7 +98,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                             <h6>Product Name </h6>
                         </div>
                         <div className="col-sm-8">
-                            <h6 className="text-muted">{prod?.Pname}</h6>
+                            <h6 className="text-muted">{prod?.product_name}</h6>
                         </div>
                     </div>
                     <div className="row">
@@ -102,7 +106,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                             <h6>Product Description</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <h6 className="text-muted"> {prod?.Pdescription}</h6>
+                            <h6 className="text-muted"> {prod?.description}</h6>
                         </div>
                     </div>
                     <div className="row">
@@ -110,7 +114,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                             <h6>Price</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <h6 className="text-muted">Rs. {prod?.Price}</h6>
+                            <h6 className="text-muted">Rs. {prod?.price}</h6>
                         </div>
                     </div>
                     <div className="row">
@@ -118,7 +122,7 @@ const OneProductDisplay: React.FunctionComponent<OneProductDisplayProps> = (prop
                             <h6>Quantity Available</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <h6 className="text-muted">{prod?.QtyAvailable}</h6>
+                            <h6 className="text-muted">{prod?.qtyAvailable}</h6>
                         </div>
                     </div>
                     <div className="row">
