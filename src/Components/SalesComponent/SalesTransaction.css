@@ -11,3 +11,13 @@
     padding : o;
 
 }
+
+.proceed-success-dis{
+    outline: none;
+    border: 1px solid #fff;
+    font-size: 1.1em;
+    transition: 0.3s; 
+    font-weight: 600;
+    color: #fff;
+    background-color: rgb(68, 68, 68);
+    }

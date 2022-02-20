@@ -11,7 +11,7 @@ interface ProfileProps {
 }
 type address = {
     address_name: string
-}
+}[]
 
 
 const Profile: React.FunctionComponent<ProfileProps> = () => {
@@ -22,7 +22,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
     const [email, setemail] = useState("");
     const [NIC, setNIC] = useState("");
     const [role, setrole] = useState("");
-    const [addresses, setaddresses] = useState([]);
+    const [addresses, setaddresses] = useState<address>([]);
 
     let id = user.id
 
@@ -97,7 +97,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
 
 
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                         <div className="col-sm-8"></div>
                         <div className="col-sm-4 ">
                             <Link to='/profile/edit' className=''>
@@ -105,8 +105,7 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                             </Link>
 
                         </div>
-                    </div>
-                    {user.role == 'basic' &&
+                    </div> */}
                         <div className="row">
                             <div className="col-sm-8"></div>
                             <div className="col-sm-4 ">
@@ -115,7 +114,6 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
                                 </Link>
                             </div>
                         </div>
-                    }
 
                 </div>
             </div>

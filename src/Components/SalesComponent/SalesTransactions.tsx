@@ -41,8 +41,9 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
     const [click, setclick] = useState(false);
     const [data, setdata] = useState<dataprops>([]);
     const [complete, setcomplete] = useState(false);
-    const [productID, setproductID] = useState('');
+    const [orderId, setorderId] = useState('');
     const [outletsList, setoutletsList] = useState<outlet>([]);
+    const [status, setstatus] = useState("")
 
     var state = {
         selectedOption: null,
@@ -52,11 +53,10 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
     const getOrdersDetails = (outlet_id: string) => {
         getOutletOrders(outlet_id).then((res) => {
             setdata(res.data.data)
-            //console.log(res.data.data)
+
         })
     }
 
-    let status: string;
 
     useEffect(() => {
         getAllOutlets().then((res) => {
@@ -64,12 +64,12 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
         })
 
         if (complete == true) {
-            console.log(productID)
-            changeOrderStatus(productID);
-            status = 'Completed'
+            console.log(orderId)
+            changeOrderStatus(orderId);
+            setstatus('Completed')
         }
         if (complete == false) {
-            status = 'Not Completed'
+            setstatus('Not Completed')
 
         }
     }, []);
@@ -110,7 +110,6 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
                     </thead>
                     <tbody>
                         {data.map((item, index) => {
-                            console.log(item.id)
                             return (
                                 <tr key={index}>
                                     <td>{item.order_id}</td>
@@ -119,13 +118,19 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
                                     <td>{item.product_id.product_name}</td>
                                     <td>{item.quantity}</td>
                                     <td>{item.price}</td>
-                                    <td>{status}</td>
+                                    <td>{item.stauts}</td>
+                                    {item.stauts=='Not Completed' && 
                                     <td> <button className='proceed-success' onClick={() => {
-                                        setcomplete(true)
-                                        setproductID(item.order_id)
-                                        status = 'Completed';
+                                        setorderId(item.order_id)
+                                        setstatus('Completed')
 
                                     }}>Complete Order</button></td>
+                                    
+                                    }
+                                    {item.stauts=='Completed' && 
+                                    <td> <button className='proceed-success-dis' disabled>Complete Order</button></td>
+                                    
+                                    }
                                 </tr>
 
 

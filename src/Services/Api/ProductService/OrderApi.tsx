@@ -10,8 +10,9 @@ export const addOrder = (data: object) => {
 }
 
 
-export const changeOrderStatus = (id:any) => {
-    return axios.patch("http://localhost:8000/order/status", id);
+export const changeOrderStatus = (product_id:any) => {
+    console.log(product_id)
+    return axios.patch("http://localhost:8000/order/status", product_id);
 }
 
 export const getOutletOrders = ( outlet_id: string) => {
