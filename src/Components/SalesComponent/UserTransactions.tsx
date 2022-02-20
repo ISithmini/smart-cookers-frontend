@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import { getTransactionHistory } from "../../Services/Api/UserServices/OrderApi";
+import { getTransactionHistory } from "../../Services/Api/ProductService/OrderApi";
 import './UserTransactions.css'
 import * as moment from 'moment';
 
@@ -67,13 +67,13 @@ const UserTransactions: React.FunctionComponent<UserTransactionsProps> = () => {
                         {transactions.map((item, index) => {
                             return (
                                 <tr key={index}  >
-                                    <td>{transactions[index].order_id}</td>
-                                    <td>{moment(transactions[index].createdAt).format('DD-MM-YYYY  HH:mm')}</td>
-                                    <td>{transactions[index].product_id.product_name}</td>
-                                    <td>{transactions[index].quantity}</td>
-                                    <td>{transactions[index].price}</td>
-                                    <td>{transactions[index].outlet_id.location}</td>
-                                    <td>{transactions[index].stauts}</td>
+                                    <td>{item.order_id}</td>
+                                    <td>{moment(item.createdAt).format('DD-MM-YYYY  HH:mm')}</td>
+                                    <td>{item.product_id.product_name}</td>
+                                    <td>{item.quantity}</td>
+                                    <td>{item.price}</td>
+                                    <td>{item.outlet_id.location}</td>
+                                    <td>{item.stauts}</td>
                                 </tr>
 
                             )

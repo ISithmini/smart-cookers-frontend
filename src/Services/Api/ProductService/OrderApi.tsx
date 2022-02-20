@@ -14,8 +14,9 @@ export const changeOrderStatus = (id:any) => {
     return axios.patch("http://localhost:8000/order/status", id);
 }
 
-export const getOrders = ( outletName : string) => {
-    return axios.get(`http://localhost:8000/product/order/${outletName}`);
+export const getOutletOrders = ( outlet_id: string) => {
+    console.log(outlet_id)
+    return axios.get(`http://localhost:8000/order/outletOrders/${outlet_id}`);
 }
 
 

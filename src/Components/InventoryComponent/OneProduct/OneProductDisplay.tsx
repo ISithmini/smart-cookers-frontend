@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getOneProductOutlet } from '../../../Services/Api/ProductService/ProductApi'
-import { addOrder } from "../../../Services/Api/UserServices/OrderApi";
+import { addOrder } from "../../../Services/Api/ProductService/OrderApi";
 import '../OneProduct/OneProductDisplay.css';
 import { AuthContext } from "../../../Context/AuthContext";
 import Modal from 'react-bootstrap/Modal';
