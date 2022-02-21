@@ -3,7 +3,7 @@ import { Route, Navigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
 interface RoutLockProps {
-    path : Element,
+    path : JSX.Element,
     redirect: string
 }
 

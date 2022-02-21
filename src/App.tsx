@@ -31,7 +31,7 @@ const App: React.FunctionComponent<IAppProps> = () => {
             <Route path="/"  element={<Home />} />
             <Route path="/login" element={<Login />} />
             {/* <RouteLock path='/inventory' element={<Inevntory/>} redirect='/login' /> */}
-            <Route path="/inventory" element={<RouteLock path={<Inevntory />} redirect={'/login'}/>} />
+            <Route path="/inventory" element={<RouteLock path={<Inevntory />} redirect={'/'}/>} />
             <Route path="/inventory/new-product" element={<RegisterNewProduct />} />
             <Route path="/inventory/view-products" element={< ViewProducts />} />
             <Route path="/profile" element={< Profile />} />

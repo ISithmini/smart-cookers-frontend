@@ -1,5 +1,4 @@
 import axios from "axios";
-//export const baseURL = "http://localhost:8000/";
 
 declare module 'axios' {
     export interface AxiosRequestConfig {
