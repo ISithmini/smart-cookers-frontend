@@ -3,24 +3,25 @@ import { Route, Navigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
 interface RoutLockProps {
-    element: any,
-    path : any,
-    redirect: any
+    path : Element,
+    redirect: string
 }
 
  
-const RoutLock: React.FunctionComponent<RoutLockProps> = ({element, path, redirect}) => {
+const RoutLock: React.FunctionComponent<RoutLockProps> = ({path , redirect}) => {
     const { user} = useContext(AuthContext);
 
     let isAccessGranted = false;
     if(user.role=='admin'){
         isAccessGranted= true;
     }
-    return isAccessGranted? ( 
-        <Route path={path} >{<Component/>}</Route>
-     ) : (
-         <Navigate to={{pathname : `${redirect}`}}/>
-     )
+    
+    if(isAccessGranted) {
+        return path;
+
+    }else{
+        return  <Navigate to={{pathname : `${redirect}`}}/>
+    }
 }
  
 export default RoutLock;

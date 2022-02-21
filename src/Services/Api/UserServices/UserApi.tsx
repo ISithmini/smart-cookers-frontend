@@ -13,13 +13,10 @@ export const logIn = (email: string , password: string) => {
     return axios.post('http://localhost:8000/user/login', {email, password})
 };
 
-export const getUser = () => {
-    return axios.get('http://localhost:8000/user/info');
-}
 
 export const getUserDetails = (id : number) => {
     axios.defaults.withCredentials = true;
-    return axios.get(`http://localhost:8000/user/details/${id}`);
+    return axios.get(`http://localhost:8000/user/${id}`);
 }
 
 export const logOut = () => {

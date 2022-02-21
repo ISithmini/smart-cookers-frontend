@@ -2,7 +2,7 @@ import blender from '../../Assets/images/blender.jpg';
 import Card from 'react-bootstrap/Card';
 import { Link, useNavigate } from 'react-router-dom';
 import './ProductDisplay.css';
-import OneProductDisplay from '../../Components/InventoryComponent/OneProduct/OneProductDisplay';
+import OneProductDisplay from '../ProductContainer/OneProduct/OneProductDisplay';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import Modal from 'react-bootstrap/Modal';

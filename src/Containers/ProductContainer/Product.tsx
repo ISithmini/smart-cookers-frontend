@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import DetailedView from "../../Components/InventoryComponent/ViewProducts/DetailedView";
 import { ProductContext } from "../../Context/ProductContext";
-import OneProductDisplay from "../../Components/InventoryComponent/OneProduct/OneProductDisplay";
 
 interface ProductProps {
 
@@ -22,13 +22,9 @@ type productporps = {
 const Product: React.FunctionComponent<productporps> = (props) => {
 
     const {product} = useContext(ProductContext);
-
-    //let ppid = props.product.id;
     const navigate = useNavigate();
 
-    // const handleClick = () => {
-    //     <OneProductDisplay />
-    // }
+    
 
     return (
 
@@ -46,7 +42,7 @@ const Product: React.FunctionComponent<productporps> = (props) => {
                 </button> */}
 
                 <button className="btn-dark" onClick={() => {
-                    <OneProductDisplay />
+                    <DetailedView/>
                 } }>
                     View Product
                 </button>

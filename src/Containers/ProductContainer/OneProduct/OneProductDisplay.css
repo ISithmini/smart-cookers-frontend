@@ -4,7 +4,7 @@
   width: 1000px;
   height: max-content;
   position: relative;
-  top: 60vh;
+  /* top: 60vh; */
   transform: translate(5%, 20%);
   border-radius: 20px;
   overflow: hidden;
