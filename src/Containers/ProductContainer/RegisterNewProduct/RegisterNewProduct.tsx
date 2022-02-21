@@ -52,7 +52,6 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
                        .child(img.name)
                        .getDownloadURL()
                        .then(productImg => {
-                           console.log(productImg)
                            var data = {
                             "id" : Id,
                             "Pname": name,
@@ -203,27 +202,17 @@ const RegisterNewProduct: React.FunctionComponent<RegisterNewProductProps> = () 
 
                                     </div>
                                 </div>
-                                {/* <div className="col-sm-10 col-md-4">
-                                        <input
-                                            type="text"
-                                            id="image-url"
-                                            name="url"
-                                            onChange={(e) => {
-                                                setproductImg(e.target.value);
-                                            }}
-                                        />
-                                </div> */}
                             </div>
                             <div className="col-md-6 p-2"
                                 onClick={(e: React.ChangeEvent<any>) => {
                                     handleSubmit(e, "post");
                                     setcompleted(true)
-                                    navigate('/inventory/view-products')
+                                    navigate('/inventory')
                                 }}>
                                 <button className="edit btn-success ">Save Product</button>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
 
-                                <button className="edit btn-secondary" onClick={() => navigate(-1)} >Cancel</button>
+                                <button className="edit btn-secondary" onClick={() => navigate('/inventory')} >Cancel</button>
 
                             </div>
                         </form>

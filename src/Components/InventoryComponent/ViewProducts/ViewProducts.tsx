@@ -11,14 +11,6 @@ interface ViewProductsProps {
 
 const ViewProducts: React.FunctionComponent<ViewProductsProps> = () => {
 
-    // type obj = {
-    //     Pname: string,
-    //     Pdescription: string,
-    //     Price: number,
-    //     qtyAvailable: number,
-
-    // };
-
     
 
     const [products, setProducts] = useState([]);
@@ -27,7 +19,6 @@ const ViewProducts: React.FunctionComponent<ViewProductsProps> = () => {
     useEffect(() => {
         getProducts().then((res: any) => {
             setProducts(res.data.data);
-            console.log(res.data.data)
         })
             .catch(err => {
                 console.log(err);

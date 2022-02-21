@@ -2,7 +2,7 @@ import './HomeComponent.css';
 import React, { useState, useEffect, useContext } from 'react';
 import ProductDisplay from '../../Containers/HomeContainer/ProductDisplay';
 import { Link } from 'react-router-dom';
-import { getAllOutlets, getProductsInOutlet } from '../../Services/Api/ProductService/ProductApi';
+import { getAllOutlets, getProductsInOutlet } from '../../Services/Api/ProductService/OutletApi';
 import { getProducts } from '../../Services/Api/ProductService/ProductApi'
 import { AuthContext } from '../../Context/AuthContext';
 import advertisment1 from '../../Assets/images/advertisment2.jpg';
@@ -21,8 +21,6 @@ type outlet = {
 const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
 
-    //const [click, setClick] = useState(false);
-    const [outletlocation, setoutletlocation] = useState("");
     const [products, setproducts] = useState([]);
     const [outletproducts, setoutletproducts] = useState([]);
     const [outletsList, setoutletsList] = useState<outlet>([]);
@@ -30,14 +28,11 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
 
     const { user, dispatch } = useContext(AuthContext);
 
-    //let sortedList = outletsList.sort(outletsList.location);
 
 
     const handleOutlet = (selectedOutlet: string) => {
-        //console.log(selectedOutlet);
         getProductsInOutlet(selectedOutlet).then((res) => {
             setoutletproducts(res.data.data)
-            console.log(res.data.data)
             setclick(true);
         })
     }
@@ -48,7 +43,6 @@ const HomeComponent: React.FunctionComponent<HomeComponentProps> = () => {
         })
         getProducts().then((res: any) => {
             setproducts(res.data.data);
-            //console.log(res.data.data)
 
 
         })

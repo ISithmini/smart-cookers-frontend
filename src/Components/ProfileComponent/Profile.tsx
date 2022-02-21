@@ -28,7 +28,6 @@ const Profile: React.FunctionComponent<ProfileProps> = () => {
 
     useEffect(() => {
         getUserDetails(id).then((res) => {
-            //console.log(res.data)
             setaddresses(res.data.addresses)
             setfirstname(res.data.firstName);
             setlastname(res.data.lastName)

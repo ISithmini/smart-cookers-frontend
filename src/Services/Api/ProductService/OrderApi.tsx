@@ -11,13 +11,11 @@ export const addOrder = (data: object) => {
 
 
 export const changeOrderStatus = (order_id : string) => {
-    console.log(order_id)
     return axios.post("http://localhost:8000/order/status", order_id);
 }
 
 export const getOutletOrders = ( outlet_id: string) => {
-    console.log(outlet_id)
-    return axios.get(`http://localhost:8000/order/${outlet_id}`);
+    return axios.get(`http://localhost:8000/order/outlet/${outlet_id}`);
 }
 
 

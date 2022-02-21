@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllOutlets } from '../../Services/Api/ProductService/ProductApi';
+import { getAllOutlets } from '../../Services/Api/ProductService/OutletApi'; 
 import { changeOrderStatus, getOutletOrders } from '../../Services/Api/ProductService/OrderApi';
 import './SalesTransaction.css';
 
@@ -68,16 +68,6 @@ const SalesTransactions: React.FunctionComponent<SalesTransactionsProps> = () =>
         getAllOutlets().then((res) => {
             setoutletsList(res.data.data);
         })
-
-        // if (complete == true) {
-        //     console.log(orderId)
-        //     changeOrderStatus(orderId);
-        //     setstatus('Completed')
-        // }
-        // if (complete == false) {
-        //     setstatus('Not Completed')
-
-        // }
     }, []);
 
 

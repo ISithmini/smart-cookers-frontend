@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getOneProductOutlet } from '../../../Services/Api/ProductService/ProductApi'
+import { getOneProductOutlet } from "../../../Services/Api/ProductService/OutletApi";
 import { addOrder } from "../../../Services/Api/ProductService/OrderApi";
 import '../OneProduct/OneProductDisplay.css';
 import { AuthContext } from "../../../Context/AuthContext";
@@ -61,7 +61,7 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
                setoutlet(res.data.data[0].outlet_id.outlet_id)
 
             })
-            .catch(err => {
+            .catch((err)=> {
                 console.log(err);
             });
 
@@ -78,7 +78,6 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
             "outlet_id" : outlet,
             "status" : "Not Completed"
         }
-        console.log(data);
         addOrder(data);  
     }
 
