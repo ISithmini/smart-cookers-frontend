@@ -27,6 +27,7 @@ const ViewProducts: React.FunctionComponent<ViewProductsProps> = () => {
     useEffect(() => {
         getProducts().then((res: any) => {
             setProducts(res.data.data);
+            console.log(res.data.data)
         })
             .catch(err => {
                 console.log(err);

@@ -10,7 +10,7 @@ export const getProducts = () => {
     return axios.get('http://localhost:8000/product/all');
 }
 
-export const getOneProduct = (product_id : number) => {
+export const getOneProduct = (product_id : any) => {
     console.log(product_id)
     return axios.get(`http://localhost:8000/product/${product_id}`);
 }
