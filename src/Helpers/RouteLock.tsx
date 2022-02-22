@@ -12,9 +12,18 @@ const RoutLock: React.FunctionComponent<RoutLockProps> = ({path , redirect}) => 
     const { user} = useContext(AuthContext);
 
     let isAccessGranted = false;
-    if(user.role=='admin' || user.role=='sales' || user.role=='inventory'){
-        isAccessGranted= true;
+    if(user) {
+        if(user.role=='admin' || user.role=='sales' || user.role=='inventory'){
+            isAccessGranted= true;
+        }else{
+            isAccessGranted = false
+        }
+
+    }else{
+        isAccessGranted = false
+
     }
+    
     
     if(isAccessGranted) {
         return path;
