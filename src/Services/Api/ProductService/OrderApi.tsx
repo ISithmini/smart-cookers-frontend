@@ -11,7 +11,8 @@ export const addOrder = (data: object) => {
 
 
 export const changeOrderStatus = (order_id : string) => {
-    return axios.post("http://localhost:8000/order/status", order_id);
+    console.log(order_id)
+    return axios.post(`http://localhost:8000/order/status/${order_id}`);
 }
 
 export const getOutletOrders = ( outlet_id: string) => {
