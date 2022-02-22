@@ -28,7 +28,7 @@ type params = {
 const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () => {
 
     const { user, dispatch } = useContext(AuthContext);
-    const [prod, setProd] = useState<product| null>(null);
+    const [prod, setProd] = useState<product>([]);
     const [outlet,setoutlet] = useState('');
     const [userRole, setuserRole] = useState(false);
     const [click, setclick] = useState(false);
@@ -43,7 +43,7 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
 
     const  qty: number = +quantity;
 
-    const  price : number = Number(prod?.price)
+    const  price : number = Number(prod.price)
 
     const totalPrice : number = Number (qty*price)
 
@@ -92,7 +92,7 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
                             <h6>Product Name </h6>
                         </div>
                         <div className="col-sm-8">
-                            <h6 className="text-muted">{prod?.product_name}</h6>
+                            <h6 className="text-muted">{prod.product_name}</h6>
                         </div>
                     </div>
                     <div className="row">
@@ -100,7 +100,7 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
                             <h6>Product Description</h6>
                         </div>
                         <div className="col-sm-8 ">
-                            <h6 className="text-muted"> {prod?.description}</h6>
+                            <h6 className="text-muted"> {prod.description}</h6>
                         </div>
                     </div>
                     <div className="row">
@@ -146,7 +146,18 @@ const OneProductDisplay: React.FunctionComponent< OneProductDisplayProps> = () =
                         </div>
                     </div>
                 }
-                {qunatitiyClick &&
+                {qty > prod.qtyAvailable &&
+                    <div className="row">
+                        <div className="col-sm-4 text-center">
+                            <h6></h6>
+                        </div>
+                        <div className="col-sm-8 ">
+                            <h6 className="text-muted"> Please enter an quantity less than the available quantity</h6>
+                        </div>
+                    </div>
+
+                }
+                { qty < prod.qtyAvailable && qunatitiyClick &&
                     <div className="row">
                         <div className="col-sm-4 text-center">
                             <h6>Total Price</h6>
